@@ -215,7 +215,7 @@ if [[ "$1" = "docset" ]]; then
     $PLIST_WRITE_CMD $DESTINATIONDIR/$DOCSETNAME/Contents/Info DocSetFeedURL $ATOMDIR/$ATOM
     $PLIST_WRITE_CMD $DESTINATIONDIR/$DOCSETNAME/Contents/Info DocSetFallbackURL https://docs.wxwidgets.org
     $PLIST_WRITE_CMD $DESTINATIONDIR/$DOCSETNAME/Contents/Info DocSetDescription "API reference and conceptual documentation for wxWidgets 3.0"
-    $PLIST_WRITE_CMD $DESTINATIONDIR/$DOCSETNAME/Contents/Info NSHumanReadableCopyright "Copyright 1992-2023 wxWidgets team, Portions 1996 Artificial Intelligence Applications Institute"
+    $PLIST_WRITE_CMD $DESTINATIONDIR/$DOCSETNAME/Contents/Info NSHumanReadableCopyright "Copyright 1992-2025 wxWidgets team, Portions 1996 Artificial Intelligence Applications Institute"
     $PLIST_WRITE_CMD $DESTINATIONDIR/$DOCSETNAME/Contents/Info isJavaScriptEnabled true
     $PLIST_WRITE_CMD $DESTINATIONDIR/$DOCSETNAME/Contents/Info dashIndexFilePath index.html
     $PLIST_WRITE_CMD $DESTINATIONDIR/$DOCSETNAME/Contents/Info DocSetPlatformFamily wx
@@ -239,5 +239,16 @@ fi
 # Doxygen has the annoying habit to put the full path of the
 # affected files in the log file; remove it to make the log
 # more readable
-topsrcdir=`cd ../.. && pwd`
-sed -i'' -e "s|$topsrcdir/||g" doxygen.log
+if [[ -s doxygen.log ]]; then
+    topsrcdir=`cd ../.. && pwd`
+    sed -i'' -e "s|$topsrcdir/||g" doxygen.log
+
+    # Filter out warnings from interface/wx/stc/stc.h for now, there are tons
+    # of them and it's not clear what to do about them, see #25603
+    if grep -q -v "interface/wx/stc/stc.h" doxygen.log; then
+        echo '*** There were warnings during docs generation ***'
+    fi
+else
+    # Don't leave empty file lying around.
+    rm doxygen.log
+fi

@@ -14,7 +14,7 @@ enum
     /// a spin control-like date picker (not supported in generic version)
     wxDP_SPIN = 1,
 
-    /// a combobox-like date picker (not supported in mac version)
+    /// a combobox-like date picker (not supported on macOS <10.15.4)
     wxDP_DROPDOWN = 2,
 
     /// always show century in the default date display (otherwise it depends on
@@ -45,8 +45,8 @@ enum
            style is not supported by the generic version.
     @style{wxDP_DROPDOWN}
            Creates a control with a month calendar drop-down part from which
-           the user can select a date. This style is not supported in OSX/Cocoa
-           native version.
+           the user can select a date. In OSX/Cocoa native version this
+           style is supported on macOS 10.15.4 and later.
     @style{wxDP_DEFAULT}
            Creates a control with the style that is best supported for the
            current platform (currently wxDP_SPIN under Windows and OSX/Cocoa
@@ -67,6 +67,13 @@ enum
     recommended to use @c wxDP_DEFAULT style only, possibly combined with @c
     wxDP_SHOWCENTURY (this is also the style used by default if none is
     specified).
+
+    @note In wxMSW this control uses default user date format even if
+        wxUILocale::UseDefault() hasn't been called, while under the other
+        platforms it only does it if the default UI locale has been set.
+        For applications targeting international users, it is strongly
+        recommended to call wxUILocale::UseDefault() to ensure that the
+        behaviour is consistent across all platforms.
 
     @beginEventEmissionTable{wxDateEvent}
     @event{EVT_DATE_CHANGED(id, func)}
@@ -106,7 +113,7 @@ public:
         constructor.
 
         @param parent
-            Parent window, must not be non-@NULL.
+            Parent window, must not be non-null.
         @param id
             The identifier for the control.
         @param dt

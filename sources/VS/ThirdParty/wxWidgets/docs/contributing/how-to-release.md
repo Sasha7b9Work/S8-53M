@@ -27,10 +27,6 @@ Instructions:
 See also `build/elfabi/check_all.sh` which checks the ABI of the newly built
 libraries and is simpler to use if there is no need to update the ABI files.
 
-Finally, please note that this check is currently run by a GitHub Actions
-workflow on the 3.2 branch, so normally any ABI breakage should be detected
-automatically.
-
 ### Checking under MSW systems.
 
 Manually check compatibility by building the widgets samples from the old tree
@@ -44,8 +40,11 @@ course.
 
 ## Pre-Release Steps
 
-See below for the files to update. You can run `build/tools/pre-release.sh` to
-do the straightforward changes like updating the dates and checksums
+Start by copying all the changes since the previous release to the change log
+file as explained in the comment there.
+
+Then update the files below. You can run `build/tools/pre-release.sh` to do
+the straightforward changes like updating the dates and checksums
 automatically, but please also review and update the contents of the README
 and announcement text.
 
@@ -126,11 +125,13 @@ Update https://www.wxwidgets.org:
   anything else, the page will dynamically show the release files with the
   specified prefixes).
 * Add a news item. Usually a news item is enough but something
-  more can be called for for major releases
+  more can be called for major releases
 * Push the changes (or create the PR with them) to GitHub. Note that this will
   trigger the site rebuild which will fail if the release statistics are not
   available yet, so make sure to publish the release on GitHub first (or wait
   an hour for the next scheduled site rebuild to happen).
+* If this is a new minor release, update `docs/index.md` to add a link to the
+  documentation for the new branch and update the existing links descriptions.
 
 Post `docs/publicity/announce.txt` at least to wx-announce@googlegroups.com and
 to wx-users.
@@ -165,7 +166,11 @@ Then from the build/bakesfiles directory run
 
 and from the root directory run
 
-        autoconf -B build/autoconf_prepend-include
+        autoconf
+
+or, if you're not using Debian Stable version of autoconf, see the instructions
+in `build/tools/autoconf/README.md` for regenerating configure on a different
+system.
 
 * Restore the description of the Git notes use and create a skeleton section
   for the next release in `docs/changes.txt`.
