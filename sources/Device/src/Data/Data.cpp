@@ -264,3 +264,17 @@ void DataSettings::Set(const DataSettings &ds)
 {
     *this = ds;
 }
+
+
+bool BufferFPGA::IsEmpty() const
+{
+    for (int i = 0; i < Size(); i++)
+    {
+        if (buffer[i] != ValueFPGA::NONE)
+        {
+            return false;
+        }
+    }
+
+    return true;
+}

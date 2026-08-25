@@ -7,7 +7,7 @@
 
 namespace Processing
 {
-    extern DataStruct out;      // Здесь хранятся данные, готовые для вывода - преобразованные из in
+    extern DataStruct _out;      // Здесь хранятся данные, готовые для вывода - преобразованные из in
 
     // Привести к текущим настройкам данные, из inA, inB. Данные сохраняются в out
     void CountedToCurrentSettings(const DataSettings &, const uint8 *inA, const uint8 *inB, DataStruct &out);
