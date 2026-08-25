@@ -75,6 +75,7 @@ file(GLOB FPGA                            ../../Device/src/FPGA/*.*)
 file(GLOB HARDWARE                        ../../Device/src/Hardware/*.*)
 file(GLOB HARDWARE_HAL                    ../../Device/src/Hardware/HAL/*.*)
 file(GLOB MENU                            ../../Device/src/Menu/*.*)
+file(GLOB MENU_PAGES                      ../../Device/src/Menu/Pages/*.*)
 file(GLOB PANEL                           ../../Device/src/Panel/*.*)
 file(GLOB SETTINGS                        ../../Device/src/Settings/*.*)
 file(GLOB UTILS                           ../../Device/src/Utils/*.*)
@@ -97,6 +98,7 @@ source_group(FPGA                       FILES ${FPGA})
 source_group(Hardware                   FILES ${HARDWARE})
 source_group(Hardware/HAL               FILES ${HARDWARE_HAL})
 source_group(Menu                       FILES ${MENU})
+source_group(Menu/Pages                 FILES ${MENU_PAGES})
 source_group(Panel                      FILES ${PANEL})
 source_group(Settings                   FILES ${SETTINGS})
 source_group(Utils                      FILES ${UTILS})
@@ -106,18 +108,20 @@ source_group(Resources                  FILES ${RESOURCES})
 #set_source_files_properties(
 #                            PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
-add_executable( ${PROJECT_NAME}
-                ${SRC}
-                ${HAL}
-                ${DISPLAY}
-                ${FPGA}
-                ${HARDWARE} ${HARDWARE_HAL}
-                ${MENU}
-                ${PANEL}
-                ${SETTINGS}
-                ${UTILS} ${UTILS_CONTAINERS}
-                ${RESOURCES}
-                )
+add_executable(
+    ${PROJECT_NAME}
+    ${SRC}
+    ${HAL}
+    ${DISPLAY}
+    ${FPGA}
+    ${HARDWARE} ${HARDWARE_HAL}
+    ${MENU}
+    ${MENU_PAGES}
+    ${PANEL}
+    ${SETTINGS}
+    ${UTILS} ${UTILS_CONTAINERS}
+    ${RESOURCES}
+)
 
 target_link_libraries(${PROJECT_NAME} wxbase33ud wxmsw33ud_core)
 
