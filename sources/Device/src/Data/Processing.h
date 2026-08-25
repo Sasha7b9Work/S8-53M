@@ -9,25 +9,22 @@ namespace Processing
 {
     extern DataStruct out;      // Здесь хранятся данные, готовые для вывода - преобразованные из in
 
+    // Привести к текущим настройкам данные, из inA, inB. Данные сохраняются в out
+    void CountedToCurrentSettings(const DataSettings &, const uint8 *inA, const uint8 *inB, DataStruct &out);
+
     // Установить данные для обработки в соотетствии с текущими настройками и состоянием
     // Если for_windows_memory - установить данные для окна памяти
     void SetDataForProcessing(ModeWork::E, bool for_window_memory);
-
-    // Аппроксимировать единичное измерение режима рандомизатора функцией sinX/X.
-    void InterpolationSinX_X(uint8 data[FPGA::MAX_POINTS * 2], TBase::E tbase);
-
-    // Возвращает строку автоматического измерения.
-    String<> GetStringMeasure(Measure::E measure, Chan);
-
-    // Расчитать все измерения.
-    void CalculateMeasures();
 
     // Обработать сигнал из in. Результат сохранён в Data::out
     // Если mode_p2p == true, то будет установлен признак поточечного фрейма
     void SetData(const DataStruct &in, bool mode_p2p = false);
 
-    // Привести к текущим настройкам данные, из inA, inB. Данные сохраняются в out
-    void CountedToCurrentSettings(const DataSettings &, const uint8 *inA, const uint8 *inB, DataStruct &out);
+    // Расчитать все измерения.
+    void CalculateMeasures();
+
+    // Возвращает строку автоматического измерения.
+    String<> GetStringMeasure(Measure::E, Chan);
 
     namespace Cursor
     {

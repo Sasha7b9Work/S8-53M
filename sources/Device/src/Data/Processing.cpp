@@ -127,6 +127,9 @@ namespace Processing
         {"CalculatePhazaPlus",          CalculatePhazaPlus,            SU::Phase2String,      false},
         {"CalculatePhazaMinus",         CalculatePhazaMinus,           SU::Phase2String,      false}
     };
+
+    // Аппроксимировать единичное измерение режима рандомизатора функцией sinX/X.
+    void InterpolationSinX_X(uint8 data[FPGA::MAX_POINTS * 2], TBase::E);
 }
 
 
