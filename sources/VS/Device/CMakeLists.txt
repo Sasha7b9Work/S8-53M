@@ -4,22 +4,23 @@ project (S8-53M2)
 
 set(CMAKE_UNITY_BUILD OFF)
 
-include_directories(../../common/_VS_GUI/CMSIS
-                    ../../STM32Cube_FW_F4/Drivers/STM32F4xx_HAL_Driver/Inc
-                    ../../STM32Cube_FW_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-                    ../../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-                    ../../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
-                    ../../STM32Cube_FW_F4/Middlewares/Third_Party/FatFs/src
+include_directories(
+    ../../common/_VS_GUI/CMSIS
+    ../../STM32Cube_FW_F4/Drivers/STM32F4xx_HAL_Driver/Inc
+    ../../STM32Cube_FW_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    ../../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+    ../../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
+    ../../STM32Cube_FW_F4/Middlewares/Third_Party/FatFs/src
 
-                    ../../VS/ThirdParty/wxWidgets/include 
-                    ../../generated/ThirdParty/lib/vc_dll/mswud
+    ../../VS/ThirdParty/wxWidgets/include 
+    ../../generated/ThirdParty/lib/vc_dll/mswud
 
-                    ../../Device/src
-                    ../../Device/src/libs
-                    ../../Device/src/Hardware/HAL
-                    ../../Device/src/Hardware/FDrive
-                    ../..
-                    )
+    ../../Device/src
+    ../../Device/src/libs
+    ../../Device/src/Hardware/HAL
+    ../../Device/src/Hardware/FDrive
+    ../..
+)
 
 link_directories(../../generated/ThirdParty/lib/vc_dll)
 
@@ -118,7 +119,7 @@ add_executable( ${PROJECT_NAME}
                 ${RESOURCES}
                 )
 
-target_link_libraries(${PROJECT_NAME} wxbase32ud wxmsw32ud_core)
+target_link_libraries(${PROJECT_NAME} wxbase33ud wxmsw33ud_core)
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase32ud_vc_custom.dll $(OutputPath) /Y)
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxmsw32ud_core_vc_custom.dll $(OutputPath) /Y)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase33ud_vc_custom.dll $(OutputPath) /Y)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxmsw33ud_core_vc_custom.dll $(OutputPath) /Y)
