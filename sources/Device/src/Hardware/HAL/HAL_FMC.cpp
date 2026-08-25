@@ -109,12 +109,12 @@ void HAL_FMC::InitRAM()
 
     static const FMC_NORSRAM_TimingTypeDef sramTiming =
     {
-        1,                 // FSMC_AddressSetupTime
-        1,                 // FSMC_AddressHoldTime
-        2,                 // FSMC_DataSetupTime
-        1,                 // FSMC_BusTurnAroundDuration
-        1,                 // FSMC_CLKDivision
-        1,                 // FSMC_DataLatency
+        2,                 // FSMC_AddressSetupTime
+        2,                 // FSMC_AddressHoldTime
+        3,                 // FSMC_DataSetupTime
+        2,                 // FSMC_BusTurnAroundDuration
+        2,                 // FSMC_CLKDivision
+        2,                 // FSMC_DataLatency
         FMC_ACCESS_MODE_C  // FSMC_AccessMode
     };
 

@@ -32,7 +32,7 @@ namespace Processing
     int lastP = 0;
     int numP = 0;
 
-    DataStruct _out;         // Здесь хранятся данные после обработки, готовые к выводу и расчёту измерений
+    DataStruct out;         // Здесь хранятся данные после обработки, готовые к выводу и расчёту измерений
 
     MeasureValue values[Measure::Count] = {{0.0f, 0.0f}};
 

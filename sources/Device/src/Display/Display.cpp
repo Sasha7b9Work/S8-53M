@@ -189,11 +189,6 @@ void Display::Update()
 
     bool needClear = NeedForClearScreen();
 
-    if (Processing::_out.Data(ChA).IsEmpty())
-    {
-        int i = 0;
-    }
-
     if (needClear)
     {
         Painter::BeginScene(COLOR_BACK);
