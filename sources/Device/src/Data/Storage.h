@@ -27,9 +27,8 @@ private:
 
 namespace Storage
 {
-    extern FrameImitation current;     // Сюда считываем непосредственно из FPGA. Рандомизатор, точки там. Чтобы потом
-                                    // переложит в хранилище
-    extern TimeMeterMS time_meter;  // Для засекания времени последнего сохранения данных
+    extern FrameImitation current;      // Сюда считываем непосредственно из FPGA. Рандомизатор, точки там. Чтобы потом переложить в хранилище
+    extern TimeMeterMS time_meter;      // Для засекания времени последнего сохранения данных
 
     // Удаление всех сохранённых измерений
     void Clear();

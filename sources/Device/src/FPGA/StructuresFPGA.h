@@ -3,6 +3,9 @@
 #include "Utils/Mutex.h"
 
 
+struct DataStruct;
+
+
 struct StateCalibration
 {
     enum E
@@ -64,7 +67,7 @@ namespace FPGA
         // Читать массив точек от first до last
         void ReadPoints(Chan, uint8 *first, const uint8 *last);
 
-        void ReadPoints(Chan);
+        void ReadPoints(Chan, DataStruct &);
 
         void Read1024Points(uint8 buffer[1024], Chan);
 

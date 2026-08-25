@@ -14,7 +14,7 @@ namespace Processing
 
     // Установить данные для обработки в соотетствии с текущими настройками и состоянием
     // Если for_windows_memory - установить данные для окна памяти
-    void SetDataForProcessing(ModeWork::E, bool for_window_memory);
+    void SetDataForProcessing(ModeWork::E, DataStruct &, bool for_window_memory);
 
     // Обработать сигнал из in. Результат сохранён в Data::out
     // Если mode_p2p == true, то будет установлен признак поточечного фрейма

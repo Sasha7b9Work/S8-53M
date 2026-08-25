@@ -205,8 +205,8 @@ void FPGA::Reader::DataRead()
 {
     IN_PROCESS_READ = true;
 
-    ReadPoints(ChA);
-    ReadPoints(ChB);
+    ReadPoints(ChA, Storage::current.data);
+    ReadPoints(ChB, Storage::current.data);
 
     Storage::Append(Storage::current.data);
 
@@ -221,7 +221,7 @@ void FPGA::Reader::DataRead()
 }
 
 
-void FPGA::Reader::ReadPoints(Chan ch)
+void FPGA::Reader::ReadPoints(Chan ch, DataStruct &data_out)
 {
     static uint16 address = 0;
 
@@ -233,8 +233,8 @@ void FPGA::Reader::ReadPoints(Chan ch)
     HAL_FMC::Write(WR_PRED, address);
     HAL_FMC::Write(WR_ADDR_READ, 0xffff);
 
-    uint8 *const begin = Storage::current.data.Data(ch).Data();
-    const uint8 *const end = Storage::current.data.Data(ch).Last();
+    uint8 *const begin = data_out.Data(ch).Data();
+    const uint8 *const end = data_out.Data(ch).Last();
 
     uint8 *dat = begin;
 

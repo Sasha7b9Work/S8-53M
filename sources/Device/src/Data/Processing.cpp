@@ -1354,7 +1354,7 @@ void Processing::SetData(const DataStruct &in, bool mode_p2p)
 }
 
 
-void Processing::SetDataForProcessing(ModeWork::E mode, bool for_window_memory)
+void Processing::SetDataForProcessing(ModeWork::E mode, DataStruct &data, bool for_window_memory)
 {
     DataSettings last_ds = Storage::GetDataSettings(0);
 
@@ -1366,31 +1366,31 @@ void Processing::SetDataForProcessing(ModeWork::E mode, bool for_window_memory)
         {
             if (START_MODE_IS_AUTO)
             {
-                if (last_ds.valid && last_ds.Equal(Storage::current.data.ds) && Storage::time_meter.ElapsedTime() < 1000)
+                if (last_ds.valid && last_ds.Equal(data.ds) && Storage::time_meter.ElapsedTime() < 1000)
                 {
                     SetData(Storage::GetLatest());
                 }
                 else
                 {
-                    SetData(Storage::current.data, true);
+                    SetData(data, true);
                 }
             }
             else if (START_MODE_IS_WAIT)
             {
-                if (last_ds.valid && last_ds.Equal(Storage::current.data.ds) && !for_window_memory)
+                if (last_ds.valid && last_ds.Equal(data.ds) && !for_window_memory)
                 {
                     SetData(Storage::GetLatest());
                 }
                 else
                 {
-                    SetData(Storage::current.data, true);
+                    SetData(data, true);
                 }
             }
             else
             {
-                if (Storage::current.data.ds.valid || for_window_memory)
+                if (data.ds.valid || for_window_memory)
                 {
-                    SetData(Storage::current.data, for_window_memory);
+                    SetData(data, for_window_memory);
                 }
                 else
                 {
@@ -1414,11 +1414,11 @@ void Processing::SetDataForProcessing(ModeWork::E mode, bool for_window_memory)
     {
         if (for_window_memory)
         {
-            DataStruct data;
+            DataStruct data_struct;
 
-            if (HAL_ROM::Data::Get(PageMemory::Internal::currentSignal, data))
+            if (HAL_ROM::Data::Get(PageMemory::Internal::currentSignal, data_struct))
             {
-                SetData(data);
+                SetData(data_struct);
             }
         }
     }
