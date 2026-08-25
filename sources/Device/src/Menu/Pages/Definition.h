@@ -1,4 +1,4 @@
-// 2022/2/11 19:33:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/2/11 19:33:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 #include "defines.h"
 #include "Settings/SettingsCursors.h"

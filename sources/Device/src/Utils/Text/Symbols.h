@@ -1,4 +1,4 @@
-// 2022/02/11 17:45:37 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/02/11 17:45:37 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 
 #define SYMBOL_MEM_INT_SHOW_DIRECT  '\x6a'  /* Кнопка рисовать текущий сигнал в режиме ВНУТР ЗУ */

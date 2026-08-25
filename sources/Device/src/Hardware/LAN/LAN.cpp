@@ -1,4 +1,4 @@
-// 2022/03/29 16:54:43 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/03/29 16:54:43 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Hardware/LAN/LAN.h"
 #include "Hardware/LAN/ethernetif.h"

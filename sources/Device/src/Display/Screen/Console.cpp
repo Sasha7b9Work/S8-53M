@@ -1,4 +1,4 @@
-// 2022/03/23 12:04:28 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/03/23 12:04:28 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Display/Screen/Console.h"
 #include "Display/font/Font.h"

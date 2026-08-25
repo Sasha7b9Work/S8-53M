@@ -1,4 +1,4 @@
-// 2021/06/24 14:59:22 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/06/24 14:59:22 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #ifndef __USBH_CONF_H
 #define __USBH_CONF_H
 

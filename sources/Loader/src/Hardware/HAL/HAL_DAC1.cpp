@@ -1,4 +1,4 @@
-// 2021/03/01 10:48:31 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/03/01 10:48:31 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
 #include <stm32f4xx_hal.h>

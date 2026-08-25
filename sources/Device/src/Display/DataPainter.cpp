@@ -1,4 +1,4 @@
-// 2022/03/16 10:18:22 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/03/16 10:18:22 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Display/DataPainter.h"
 #include "Data/Storage.h"

@@ -1,4 +1,4 @@
-// 2021/02/25 8:24:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/02/25 8:24:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "LEDS.h"
 

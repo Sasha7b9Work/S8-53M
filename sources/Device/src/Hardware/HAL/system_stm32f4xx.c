@@ -1,4 +1,4 @@
-// 2022/2/11 19:32:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/2/11 19:32:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "stm32f4xx.h"
 
 #if !defined  (HSE_VALUE) 

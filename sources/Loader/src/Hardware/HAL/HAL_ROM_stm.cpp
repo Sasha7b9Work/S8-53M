@@ -1,4 +1,4 @@
-// 2021/05/20 23:02:10 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/05/20 23:02:10 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Hardware/Memory/Sector.h"
 #include <stm32f4xx_hal.h>

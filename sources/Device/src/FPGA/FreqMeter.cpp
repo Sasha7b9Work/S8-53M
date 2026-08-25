@@ -1,4 +1,4 @@
-// 2022/02/21 11:58:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/02/21 11:58:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/HAL/HAL.h"

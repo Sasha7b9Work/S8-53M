@@ -1,4 +1,4 @@
-// 2022/02/11 17:48:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/02/11 17:48:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Log.h"
 #include "Menu/FileManager.h"

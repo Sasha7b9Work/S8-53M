@@ -1,4 +1,4 @@
-// 2021/04/27 11:09:23 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/04/27 11:09:23 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 #include "Utils/Containers/String.h"
 

@@ -1,4 +1,4 @@
-// 2021/06/30 15:45:23 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/06/30 15:45:23 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "main.h"
 #include "Display/Painter/Animated.h"

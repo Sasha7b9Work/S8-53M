@@ -1,4 +1,4 @@
-// 2022/01/21 16:39:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/01/21 16:39:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "SCPI/BufferSCPI.h"
 #include <cstring>

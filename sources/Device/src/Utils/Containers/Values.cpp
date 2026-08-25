@@ -1,4 +1,4 @@
-// 2021/03/24 10:56:47 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/03/24 10:56:47 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Settings/Settings.h"
 #include "Utils/Containers/Values.h"

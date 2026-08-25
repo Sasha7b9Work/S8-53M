@@ -1,4 +1,4 @@
-// 2022/03/16 08:24:51 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/03/16 08:24:51 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 #include "defines.h"
 #include "Data/Data.h"

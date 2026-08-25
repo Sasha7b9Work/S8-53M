@@ -1,4 +1,4 @@
-// 2022/03/16 11:20:26 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/03/16 11:20:26 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Data/DataExtensions.h"
 #include "FPGA/TypesFPGA.h"

@@ -1,4 +1,4 @@
-// 2022/2/11 19:25:37 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/2/11 19:25:37 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 #ifdef __cplusplus
  extern "C" {

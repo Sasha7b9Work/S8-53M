@@ -1,4 +1,4 @@
-// 2022/03/30 08:25:33 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/03/30 08:25:33 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 #include "Display/Colors.h"
 #include <cstring>

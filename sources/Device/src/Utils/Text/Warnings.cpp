@@ -1,4 +1,4 @@
-// 2022/03/23 12:17:37 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/03/23 12:17:37 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Display/Colors.h"
 #include "Hardware/Sound.h"

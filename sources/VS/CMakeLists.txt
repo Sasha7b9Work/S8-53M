@@ -1,6 +1,6 @@
 # (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 
-cmake_minimum_required(VERSION 2.9)
+cmake_minimum_required(VERSION 3.20)
 
 # Set project name
 project (S8-53M2_GUI)

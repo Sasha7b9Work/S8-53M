@@ -1,4 +1,4 @@
-// 2021/06/24 14:23:54 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/06/24 14:23:54 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Hardware/FDrive/USBH.h"
 #include <usbh_def.h>

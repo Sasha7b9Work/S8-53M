@@ -1,4 +1,4 @@
-// 2022/2/11 22:18:49 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/2/11 22:18:49 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 #include "Display/DisplayTypes.h"
 

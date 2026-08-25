@@ -1,4 +1,4 @@
-// 2021/04/27 11:09:39 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2021/04/27 11:09:39 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 #include "Hardware/Memory/ROM.h"
 

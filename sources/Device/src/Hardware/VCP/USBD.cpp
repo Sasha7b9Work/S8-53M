@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 
 // For cstdlib:23 : C2733: 'abs': you cannot overload a function with 'extern "C"' linkage
 #define _STL_COMPILER_PREPROCESSOR 0

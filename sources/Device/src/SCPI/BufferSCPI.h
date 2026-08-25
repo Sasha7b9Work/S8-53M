@@ -1,4 +1,4 @@
-// 2022/01/21 16:38:54 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2022/01/21 16:38:54 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
 #include "Utils/Text/String.h"
 #include "Utils/Containers/Buffer.h"
