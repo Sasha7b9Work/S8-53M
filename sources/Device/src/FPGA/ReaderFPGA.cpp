@@ -203,21 +203,33 @@ void FPGA::Reader::P2P::SavePoints()
 
 void FPGA::Reader::DataRead()
 {
+    DEBUG_POINT_0
     IN_PROCESS_READ = true;
+    DEBUG_POINT_0
 
     ReadPoints(ChA, Storage::current.data);
+    DEBUG_POINT_0
     ReadPoints(ChB, Storage::current.data);
+    DEBUG_POINT_0
 
     Storage::Append(Storage::current.data);
+    DEBUG_POINT_0
 
     if (TRIG_MODE_FIND_IS_AUTO && TRIG_AUTO_FIND)
     {
+        DEBUG_POINT_0
         TrigLev::FindAndSet();
+        DEBUG_POINT_0
 
         TRIG_AUTO_FIND = false;
+        DEBUG_POINT_0
     }
 
+    DEBUG_POINT_0
+
     IN_PROCESS_READ = false;
+
+    DEBUG_POINT_0
 }
 
 

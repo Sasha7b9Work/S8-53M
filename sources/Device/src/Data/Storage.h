@@ -27,6 +27,8 @@ private:
 
 namespace Storage
 {
+    extern DataSettings *first_ds;
+
     extern FrameImitation current;      // —юда считываем непосредственно из FPGA. –андомизатор, точки там. „тобы потом переложить в хранилище
     extern TimeMeterMS time_meter;      // ƒл€ засекани€ времени последнего сохранени€ данных
 

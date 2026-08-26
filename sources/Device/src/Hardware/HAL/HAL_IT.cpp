@@ -26,15 +26,18 @@ extern "C" {
     {
         volatile int line = Debug::line[0];
         volatile pchar file = Debug::file[0];
-        volatile int counter = Debug::counter;
-        volatile int pushed = Debug::pushed;
+        volatile int count_data = Debug::count_data;
+        volatile int *address_count_data = Debug::address_count_data;
+        volatile uint *address_first_ds = Debug::address_first_ds;
 
         while (1) //-V776
         {
             line = line;
             file = file;
-            counter = counter;
-            pushed = pushed;
+            count_data = count_data;
+            address_count_data = address_count_data;
+            address_first_ds = address_first_ds;
+            int i = 0;
         }
     }
 

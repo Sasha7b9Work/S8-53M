@@ -73,7 +73,11 @@ void DataSettings::PrintElement()
 
 void Storage::Clear()
 {
+    std::memset(beginPool, 0, sizeof(DataSettings));
+
+    DEBUG_POINT_0
     first_ds = nullptr;
+    DEBUG_POINT_0
     last_ds = (DataSettings *)beginPool;
     last_ds->next = last_ds->prev = nullptr;
     count_data = 0;
@@ -88,26 +92,46 @@ void Storage::Clear()
 
 void Storage::Append(DataStruct &data)
 {
+    DEBUG_POINT_0
     static int id = 0;
 
+    DEBUG_POINT_0
+
     SameSettings::Calculate(data);
+
+    DEBUG_POINT_0
 
     data.ds.time = HAL_RTC::GetPackedTime();
     data.ds.id = ++id;
 
+    DEBUG_POINT_0
+
     Limitator::Append(data);
+
+    DEBUG_POINT_0
 
     DataSettings *ds = PrepareNewFrame(data.ds);
 
+    DEBUG_POINT_0
     DataFrame frame(ds);
+
+    DEBUG_POINT_0
 
     frame.FillDataChannelsFromStruct(data);
 
+    DEBUG_POINT_0
+
     Averager::Append(frame);
+
+    DEBUG_POINT_0
 
     frame.ds->valid = 1;
 
+    DEBUG_POINT_0
+
     time_meter.Reset();
+
+    DEBUG_POINT_0
 }
 
 
@@ -163,10 +187,13 @@ int Storage::SameSettings::GetCount()
 
 static DataSettings *Storage::GetDataSettingsPointer(int indexFromEnd)
 {
+    DEBUG_POINT_0
     if (first_ds == nullptr)
     {
+        DEBUG_POINT_0
         return nullptr;
     }
+    DEBUG_POINT_0
 
     int index = indexFromEnd;
     DataSettings *ds = last_ds;
@@ -266,9 +293,12 @@ void Storage::CopyData(DataSettings *ds, Chan ch, BufferFPGA &data)
 
 int Storage::NumberAvailableEntries()
 {
+    DEBUG_POINT_0
     if (first_ds == nullptr)
     {
+        DEBUG_POINT_0
         return 0;
+        DEBUG_POINT_0
     }
 
     return SIZE_POOL / last_ds->SizeFrame();
@@ -277,24 +307,37 @@ int Storage::NumberAvailableEntries()
 
 DataSettings *Storage::PrepareNewFrame(DataSettings &ds)
 {
+    DEBUG_POINT_0
+
     int required = ds.SizeFrame();
+
+    DEBUG_POINT_0
 
     while (MemoryFree() < required)
     {
+        DEBUG_POINT_0
         RemoveFirstFrame();
+        DEBUG_POINT_0
     }
+    DEBUG_POINT_0
 
     uint8 *addrRecord = nullptr;
 
+    DEBUG_POINT_0
+
     if (first_ds == nullptr)
     {
+        DEBUG_POINT_0
         first_ds = (DataSettings *)beginPool;
+        DEBUG_POINT_0
         addrRecord = beginPool;
         ds.prev = nullptr;
         ds.next = nullptr;
+        DEBUG_POINT_0
     }
     else
     {
+        DEBUG_POINT_0
         addrRecord = (uint8 *)last_ds + last_ds->SizeFrame();
 
         if (addrRecord + ds.SizeFrame() > endPool)
@@ -305,13 +348,22 @@ DataSettings *Storage::PrepareNewFrame(DataSettings &ds)
         ds.prev = last_ds;
         last_ds->next = addrRecord;
         ds.next = nullptr;
+        DEBUG_POINT_0
     }
+
+    DEBUG_POINT_0
 
     last_ds = (DataSettings *)addrRecord;
 
+    DEBUG_POINT_0
+
     std::memcpy(addrRecord, &ds, sizeof(DataSettings));
 
+    DEBUG_POINT_0
+
     count_data++;
+
+    DEBUG_POINT_0
 
     return last_ds;
 }
@@ -319,27 +371,34 @@ DataSettings *Storage::PrepareNewFrame(DataSettings &ds)
 
 int Storage::MemoryFree()
 {
+    DEBUG_POINT_0
     if (first_ds == nullptr)
     {
+        DEBUG_POINT_0
         return SIZE_POOL;
     }
     else if (first_ds == last_ds)
     {
+        DEBUG_POINT_0
         return (endPool - (uint8 *)first_ds - (int)first_ds->SizeFrame());
     }
     else if (first_ds < last_ds)
     {
+        DEBUG_POINT_0
         if ((uint8 *)first_ds == beginPool)
         {
+            DEBUG_POINT_0
             return (endPool - (uint8 *)last_ds - last_ds->SizeFrame());
         }
         else
         {
+            DEBUG_POINT_0
             return (uint8 *)first_ds - beginPool;
         }
     }
     else if (last_ds < first_ds)
     {
+        DEBUG_POINT_0
         return (uint8 *)first_ds - (uint8 *)last_ds - last_ds->SizeFrame();
     }
     return 0;
@@ -354,12 +413,33 @@ int DataSettings::SizeFrame() const
 
 void Storage::RemoveFirstFrame()
 {
+    DEBUG_POINT_0
     if (first_ds)
     {
+        DEBUG_POINT_0
         first_ds = (DataSettings *)first_ds->next;
+
+        DEBUG_POINT_0;
+
+        Debug::address_first_ds = (uint *)first_ds;
+
+        DEBUG_POINT_0
         first_ds->prev = nullptr;
+
+        DEBUG_POINT_0;
+
+        Debug::address_count_data = &count_data;
+
+        DEBUG_POINT_0
+
+        Debug::count_data = count_data;
+
+        DEBUG_POINT_0;
+
         count_data--;
+        DEBUG_POINT_0
     }
+    DEBUG_POINT_0
 }
 
 
@@ -375,7 +455,9 @@ void Storage::RemoveLastFrame()
         else
         {
             last_ds = nullptr;
+            DEBUG_POINT_0
             first_ds = nullptr;
+            DEBUG_POINT_0
         }
 
         count_data--;
