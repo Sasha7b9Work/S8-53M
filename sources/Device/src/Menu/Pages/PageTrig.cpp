@@ -132,14 +132,7 @@ static const Choice mcAutoFind_Mode =
         "2. \"Автоматический\" - поиск производится автоматически."
         ,
         "Selecting the automatic search of synchronization:\n"
-#ifndef WIN32
-#pragma clang diagnostic push
-#pragma diag_suppress 192
-#endif
     "1. \"Hand\" - search is run on pressing of the button \"Find\" or on deduction during 0.5s the СИНХР button if it is established \"SERVICE\x99Mode long СИНХР\x99\x41utolevel\".\n"
-#ifndef WIN32
-#pragma clang diagnostic pop
-#endif
     "2. \"Auto\" - the search is automatically."
     },
     {

@@ -235,7 +235,7 @@ static void DrawSetMask()
 
     // Теперь рисуем спецсимволы
     position = 0;
-    while (index < (sizeof(Tables::symbolsAlphaBet) / 4))
+    while (index < (int)(sizeof(Tables::symbolsAlphaBet) / 4))
     {
         Tables::DrawStr(index, x0 + deltaX + 26 + position * 20, y0 + deltaY0 + deltaY * 3);
         index++;
@@ -254,7 +254,7 @@ static void DrawSetMask()
 
     deltaY--;
     Color::SetCurrent(COLOR_FILL);
-    for (int i = 0; i < sizeof(strings) / 4; i++)
+    for (int i = 0; i < (int)sizeof(strings) / 4; i++)
     {
         String<>(strings[i]).Draw(x0 + deltaX, y0 + 100 + deltaY * i);
     }

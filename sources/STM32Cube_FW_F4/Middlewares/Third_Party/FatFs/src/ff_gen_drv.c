@@ -19,6 +19,8 @@
 #include <stm32f4xx.h>
 #include "ff_gen_drv.h"
 
+#pragma clang diagnostic ignored "-Wunused-parameter"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/

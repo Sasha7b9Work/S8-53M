@@ -61,13 +61,13 @@ int String<capa>::Draw(int x, int y, Color::E color)
 
         uint8 length = 0;
 
-        int counter = 0;
+//        int counter = 0;
         while (*text && length < (2048 - 7))
         {
             command.PushByte(*text);
             text++;
             length++;
-            counter++;
+//            counter++;
         }
 
         command.PushByte(0);
@@ -86,6 +86,9 @@ int String<capa>::Draw(int x, int y, Color::E color)
 
     return x;
 }
+
+
+#pragma clang diagnostic ignored "-Wnonnull"
 
 
 template<int capacity>
