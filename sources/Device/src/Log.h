@@ -9,7 +9,7 @@
 
 #ifdef DEBUG
     #define LOG_ERROR(...)       Log::Error(__VA_ARGS__)
-    #define LOG_ERROR_TRACE(...) Log::ErrorTrace(__MODULE__, __FUNCTION__, __LINE__, __VA_ARGS__)
+    #define LOG_ERROR_TRACE(...) Log::ErrorTrace(__FILE_NAME__, __FUNCTION__, __LINE__, __VA_ARGS__)
 #else
     #define LOG_ERROR(...)
     #define LOG_ERROR_TRACE(...)

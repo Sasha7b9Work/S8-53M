@@ -10,8 +10,9 @@
       <TargetName>Debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC536</pCCUsed>
-      <uAC6>0</uAC6>
+      <pArmCC>6240000::V6.24::ARMCLANG</pArmCC>
+      <pCCUsed>6240000::V6.24::ARMCLANG</pCCUsed>
+      <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F429IITx</Device>
@@ -314,7 +315,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>2</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -323,22 +324,22 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>1</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>1</uSurpInc>
             <uC99>0</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>0</v6Lang>
-            <v6LangP>0</v6LangP>
-            <vShortEn>0</vShortEn>
-            <vShortWch>0</vShortWch>
+            <v6Lang>6</v6Lang>
+            <v6LangP>9</v6LangP>
+            <vShortEn>1</vShortEn>
+            <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>--cpp</MiscControls>
-              <Define>USE_HAL_DRIVER, STM32F429xx, __cplusplus,DEBUG,DEVICE</Define>
+              <MiscControls></MiscControls>
+              <Define>USE_HAL_DRIVER, STM32F429xx, DEBUG,DEVICE</Define>
               <Undefine></Undefine>
               <IncludePath>..\STM32Cube_FW_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Src;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Device_Library\Core\Inc;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Src;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Device_Library\Core\Src;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\src;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\src\include;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\system;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\src\include\ipv4;..\STM32Cube_FW_F4\Middlewares\Third_Party\FatFs\src;..\STM32Cube_FW_F4\Middlewares\Third_Party\FatFs\src\drivers;.\src;.\src\Hardware\HAL;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\src\include\lwip;..\STM32Cube_FW_F4\Drivers\CMSIS\Include;..\..\sources;.\src\Hardware\VCP;.\src\Hardware\LAN;.\src\Hardware\FDrive</IncludePath>
             </VariousControls>
@@ -2011,8 +2012,9 @@
       <TargetName>Release</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC536</pCCUsed>
-      <uAC6>0</uAC6>
+      <pArmCC>6240000::V6.24::ARMCLANG</pArmCC>
+      <pCCUsed>6240000::V6.24::ARMCLANG</pCCUsed>
+      <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F429IITx</Device>
@@ -2324,22 +2326,22 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>1</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>1</uSurpInc>
             <uC99>0</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>0</v6Lang>
-            <v6LangP>0</v6LangP>
-            <vShortEn>0</vShortEn>
-            <vShortWch>0</vShortWch>
+            <v6Lang>6</v6Lang>
+            <v6LangP>9</v6LangP>
+            <vShortEn>1</vShortEn>
+            <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls>--cpp --diag_suppress 4487</MiscControls>
-              <Define>USE_HAL_DRIVER, STM32F429xx, __cplusplus,DEVICE,USE_FULL_LL_DRIVER</Define>
+              <MiscControls></MiscControls>
+              <Define>USE_HAL_DRIVER, STM32F429xx, DEVICE,USE_FULL_LL_DRIVER</Define>
               <Undefine></Undefine>
               <IncludePath>..\STM32Cube_FW_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\STM32Cube_FW_F4\Drivers\STM32F4xx_HAL_Driver\Src;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Device_Library\Core\Inc;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Src;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Device_Library\Core\Src;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\STM32Cube_FW_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\src;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\src\include;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\system;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\src\include\ipv4;..\STM32Cube_FW_F4\Middlewares\Third_Party\FatFs\src;..\STM32Cube_FW_F4\Middlewares\Third_Party\FatFs\src\drivers;.\src;.\src\Hardware\HAL;..\STM32Cube_FW_F4\Middlewares\Third_Party\LwIP\src\include\lwip;..\STM32Cube_FW_F4\Drivers\CMSIS\Include;..\..\sources;.\src\Hardware\VCP;.\src\Hardware\LAN;.\src\Hardware\FDrive</IncludePath>
             </VariousControls>

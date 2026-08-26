@@ -187,7 +187,7 @@ static const arrayItems itemsTime =
     (void *)&mcDivRole       // пюгбепрйю - т-ЖХЪ бп/дек    
 };
 
-static const Page pTime            // пюгбепрйю
+const Page pTime            // пюгбепрйю
 (
     PageMain::self, 0,
     "пюгбепрйю", "SCAN",

@@ -408,7 +408,7 @@ static void Netif_Config(void)
     }
 
     /* Set the link callback function, this function is called on change of link status */
-    netif_set_link_callback(&gnetif, ethernetif_update_config);
+    netif_set_link_callback(&gnetif, ethernet_link_status_updated);
 }
 
 

@@ -4,16 +4,16 @@
 
 
 #ifndef __cplusplus
-typedef unsigned char bool;
-#define false   0
-#define true    (!false)
+	typedef unsigned char bool;
+	#define false   0
+	#define true    (!false)
 #endif
 
 
 #ifdef WIN32
-#define __STATIC_INLINE inline
+	#define __STATIC_INLINE inline
 #else
-#define nullptr 0 //-V1059
+	#define nullptr 0 //-V1059
 #endif
 
 

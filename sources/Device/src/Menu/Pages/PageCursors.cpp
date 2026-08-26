@@ -465,7 +465,7 @@ static void DrawSB_Cursors_U(int x, int y)
 }
 
 
-static const SmallButton sbSetU
+const SmallButton sbSetU
 (
     &mspSet, 0,
     "Курсоры U", "Cursors U",
@@ -564,7 +564,7 @@ static void DrawSB_Cursors_T(int x, int y)
 }
 
 
-static const SmallButton sbSetT
+const SmallButton sbSetT
 (
     &mspSet, 0,
     "Курсоры T", "Cursors T",
@@ -598,7 +598,7 @@ static void DrawSB_Cursors_100(int x, int y)
 }
 
 
-static const SmallButton sbSet100
+const SmallButton sbSet100
 (
     &mspSet, 0,
     "100%%", "100%%",
@@ -652,7 +652,7 @@ static void DrawSB_Cursors_PointsPercents(int x, int y)
 }
 
 
-static const SmallButton sbSetPointsPercents
+const SmallButton sbSetPointsPercents
 (
     &mspSet, 0,
     "Перемещение", "Movement",

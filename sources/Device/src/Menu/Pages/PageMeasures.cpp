@@ -284,7 +284,7 @@ static const arrayItems itemsMeasTune =
 };
 
 
-static const Page mspMeasTune
+const Page mspMeasTune
 (
     &pMeasures, IsActiveButtonMeasuresTune,
     "Õ¿—“–Œ»“‹", "CONFIGURE",
@@ -303,7 +303,7 @@ static const arrayItems itemsMeasures =
     (void*)&mspMeasTune    
 };
 
-static const Page pMeasures
+const Page pMeasures
 (
     PageMain::self, 0,
     "»«Ã≈–≈Õ»ﬂ", "MEASURES",

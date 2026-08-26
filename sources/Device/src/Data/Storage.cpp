@@ -185,7 +185,7 @@ int Storage::SameSettings::GetCount()
 }
 
 
-static DataSettings *Storage::GetDataSettingsPointer(int indexFromEnd)
+DataSettings *Storage::GetDataSettingsPointer(int indexFromEnd)
 {
     DEBUG_POINT_0
     if (first_ds == nullptr)
@@ -213,7 +213,7 @@ static DataSettings *Storage::GetDataSettingsPointer(int indexFromEnd)
 }
 
 
-static DataSettings Storage::GetDataSettings(int indexFromEnd)
+DataSettings Storage::GetDataSettings(int indexFromEnd)
 {
     DataSettings *dp = GetDataSettingsPointer(indexFromEnd);
 

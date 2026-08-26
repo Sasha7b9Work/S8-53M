@@ -68,7 +68,7 @@ pchar SCPI::TBASE_::RANGE_(pchar buffer)
 
     IF_REQUEST(InterCom::SendFormat0D(":TBASE:RANGE%s", map[SET_TBASE].value));
 
-    return false;
+    return nullptr;
 }
 
 

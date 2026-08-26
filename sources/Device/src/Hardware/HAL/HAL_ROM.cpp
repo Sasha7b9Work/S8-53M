@@ -322,7 +322,7 @@ void HAL_ROM::Data::GetInfo(bool info[MAX_DATAS])
 
 
 // Возвращает true, если заполнены все информационные поля (сектор ADDR_SECTOR_DATA_INFO)
-static bool HAL_ROM::Data::SectorInfo::Filled()
+bool HAL_ROM::Data::SectorInfo::Filled()
 {
     StructInfo *info = StructInfo::First();
 
