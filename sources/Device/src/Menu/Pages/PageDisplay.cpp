@@ -313,7 +313,7 @@ static bool IsActive_Averaging()
 }
 
 
-static const Page mspAveraging
+const Page mspAveraging
 (
     &pDisplay, IsActive_Averaging,
     "”—–≈ƒÕ≈Õ»≈", "AVERAGE",
@@ -504,7 +504,7 @@ static const arrayItems itemsSettings =
     (void*)&mcSettings_AutoHide
 };
 
-static const Page mspSettings
+const Page mspSettings
 (
     &pDisplay, 0,
     "Õ¿—“–Œ… »", "SETTINGS",
@@ -578,7 +578,7 @@ static const arrayItems itemsSettings_Colors =
     (void*)&mgcSettings_Colors_Grid
 };
 
-static const Page mspSettings_Colors
+const Page mspSettings_Colors
 (
     &mspSettings, 0,
     "÷¬≈“¿", "COLORS",

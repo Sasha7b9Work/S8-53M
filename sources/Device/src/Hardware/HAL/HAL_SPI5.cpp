@@ -30,7 +30,7 @@ namespace HAL_SPI5
     };
 
 
-    void *HAL_SPI5::handle = &handleSPI5;
+    void *handle = &handleSPI5;
 
 
     static const int  SIZE_PACKET = 3;

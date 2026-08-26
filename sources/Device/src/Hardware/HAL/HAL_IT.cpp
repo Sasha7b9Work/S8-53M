@@ -32,11 +32,11 @@ extern "C" {
 
         while (1) //-V776
         {
-            line = line;
-            file = file;
-            count_data = count_data;
-            address_count_data = address_count_data;
-            address_first_ds = address_first_ds;
+//            line = line;
+//            file = file;
+//            count_data = count_data;
+//            address_count_data = address_count_data;
+//            address_first_ds = address_first_ds;
         }
     }
 

@@ -1019,7 +1019,7 @@ bool SU::String2Int(char *str, int *value)
 
 String<> SU::Voltage2String(float voltage, bool alwaysSign)
 {
-    char *suffix;
+    const char *suffix = nullptr;
 
     if (voltage == ERROR_VALUE_FLOAT)
     {
@@ -1054,7 +1054,7 @@ String<> SU::Voltage2String(float voltage, bool alwaysSign)
 
 String<> SU::Time2String(float time, bool alwaysSign)
 {
-    char *suffix = 0;
+    const char *suffix = nullptr;
 
     if (time == ERROR_VALUE_FLOAT)
     {
@@ -1094,7 +1094,7 @@ String<> SU::Freq2String(float freq, bool)
         return EmptyString();
     }
 
-    char *suffix = 0;
+    const char *suffix = nullptr;
 
     if (freq >= 1e6f)
     {

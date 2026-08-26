@@ -4,14 +4,18 @@
 #define DEVELOPER_VERSION "1.0.21"
 
 
+#pragma clang diagnostic ignored "-Winvalid-source-encoding"
+#pragma clang diagnostic ignored "-Wmissing-field-initializers"
+#pragma clang diagnostic ignored "-Wwritable-strings"
+#pragma clang diagnostic ignored "-Wunused-function"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wchar-subscripts"
+
+
 #ifdef WIN32
     #define __attribute__(x)
     #define __packed__
-#else
-    #define nullptr 0 //-V1059
-    #pragma anon_unions
-
-    #pragma diag_suppress 2748
 #endif
 
 

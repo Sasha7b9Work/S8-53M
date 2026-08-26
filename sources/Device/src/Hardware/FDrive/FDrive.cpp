@@ -127,7 +127,6 @@ void Directory::GetNumDirsAndFiles(pchar  fullPath, int *numDirs, int *numFiles)
 
     if (f_opendir(&dir, nameDir) == FR_OK)
     {
-        int numReadingElements = 0;
         bool alreadyNull = false;
 
         while (true)
@@ -146,8 +145,6 @@ void Directory::GetNumDirsAndFiles(pchar  fullPath, int *numDirs, int *numFiles)
                 alreadyNull = true;
                 continue;
             }
-
-            numReadingElements++;
 
             if (fno.fname[0] != '.')
             {

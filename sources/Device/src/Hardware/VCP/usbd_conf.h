@@ -1,8 +1,8 @@
 #pragma once
 #include "stm32f4xx_hal.h"
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 #ifdef WIN32
@@ -22,10 +22,10 @@
 
 #define USBD_LPM_ENABLED 0
  
-#define USBD_malloc         std::malloc
-#define USBD_free           std::free
-#define USBD_memset         std::memset
-#define USBD_memcpy         std::memcpy
+#define USBD_malloc         malloc
+#define USBD_free           free
+#define USBD_memset         memset
+#define USBD_memcpy         memcpy
     
 #if (USBD_DEBUG_LEVEL > 0)
 #define  USBD_UsrLog(...)   printf(__VA_ARGS__);\

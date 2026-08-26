@@ -772,6 +772,7 @@ int TShift::ShiftForRandomizer()
     case TBase::_10ns:  tshift -= 6;    break;
     case TBase::_5ns:   tshift -= 11;   break;
     case TBase::_2ns:   tshift -= 16;   break;
+    default: break;
     }
 
     if (tshift >= 0)

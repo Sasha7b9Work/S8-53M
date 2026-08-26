@@ -101,7 +101,7 @@ static const arrayItems itemsHelp =
     (void*)&sbHelpParagraphNext    
 };
 
-static const Page mpHelp            // онлныэ
+const Page mpHelp            // онлныэ
 (
     PageMain::self, 0,
     "онлныэ", "HELP",

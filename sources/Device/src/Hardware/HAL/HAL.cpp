@@ -23,7 +23,7 @@ namespace HAL_HCD
 namespace HAL_PCD
 {
     static PCD_HandleTypeDef handlePCD;
-    void *HAL_PCD::handle = &handlePCD;
+    void *handle = &handlePCD;
 }
 
 

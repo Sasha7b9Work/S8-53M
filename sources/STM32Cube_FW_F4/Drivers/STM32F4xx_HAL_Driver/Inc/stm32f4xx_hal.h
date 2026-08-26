@@ -7,13 +7,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2017 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */ 
@@ -21,10 +20,6 @@
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32F4xx_HAL_H
 #define __STM32F4xx_HAL_H
-
-#ifdef WIN32
-#pragma warning(push, 0)
-#endif
 
 #ifdef __cplusplus
  extern "C" {
@@ -206,7 +201,7 @@ typedef enum
 /** @addtogroup HAL_Exported_Variables
   * @{
   */
-//extern volatile unsigned int uwTick;
+extern __IO uint32_t uwTick;
 extern uint32_t uwTickPrio;
 extern HAL_TickFreqTypeDef uwTickFreq;
 /**
@@ -297,10 +292,6 @@ void HAL_DisableMemorySwappingBank(void);
 }
 #endif
 
-#ifdef WIN32
-#pragma warning(pop)
-#endif
-
 #endif /* __STM32F4xx_HAL_H */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

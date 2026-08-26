@@ -15,8 +15,14 @@
 #ifdef GUI
     #define TIMER_MS HAL_TIM::TimeMS()
 #else
+#ifdef __cplusplus
+ extern "C" {
+#endif
     extern volatile unsigned int uwTick;
-    #define TIMER_MS              uwTick
+	 #ifdef __cplusplus
+ }
+#endif
+    #define TIMER_MS     uwTick
 #endif
 
 
