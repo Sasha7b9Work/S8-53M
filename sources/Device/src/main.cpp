@@ -36,25 +36,45 @@ int main()
     FDrive::Init();
 
     FPGA::Start();
-
+    
     while(1)
     {
+        DEBUG_POINT_0
+
         Timer::StartMultiMeasurement();      // Сброс таймера для замера длительности временных интервалов в течение одной итерации цикла.
+
+        DEBUG_POINT_0
 
         FPGA::meterStart.Reset();
 
+        DEBUG_POINT_0
+
         FDrive::Update();
+
+        DEBUG_POINT_0
 
         FPGA::Update();                      // Обновляем аппаратную часть.
 
+        DEBUG_POINT_0
+
         Panel::Update();
+
+        DEBUG_POINT_0
 
         Menu::UpdateInput();                 // Обновляем состояние меню
 
+        DEBUG_POINT_0
+
         Display::Update();                   // Рисуем экран.
+
+        DEBUG_POINT_0
 
         LAN::Update();
 
+        DEBUG_POINT_0
+
         SCPI::Update();
+
+        DEBUG_POINT_0
     }
 }

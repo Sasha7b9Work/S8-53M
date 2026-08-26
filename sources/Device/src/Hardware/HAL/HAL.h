@@ -84,6 +84,8 @@ namespace HAL_FMC
 
     void Write(uint16 *const address, uint16 value);
 
+    static const uint RAM_SIZE = 1024 * 1024;
+
     extern uint16 *const ADDR_FPGA;                 // Адрес записи в альтеру
 
     extern uint8 *const ADDR_RAM_BEGIN;             // Первый свободный адрес в RAM.
@@ -91,8 +93,6 @@ namespace HAL_FMC
     extern uint8 *const ADDR_RAM_DATA_END;          // Конец области хранения данных
     extern uint8 *const ADDR_RAM_DISPLAY_FRONT;     // Видимое изображение дисплея. Находится в RAM и не может исполь-
                                                     // зоваться для других целей. Размер 75кБ
-    extern uint8 *const ADDR_RAM_END;               // Указывает на первый недопустимый адрес RAM. Использовать можно
-                                                    // адреса [ADDR_RAM_BEGIN...(ADDR_RAM_END - 1)]
 };
 
 
@@ -175,3 +175,14 @@ namespace HAL_CRC32
 
     uint Calculate(uint *first_word, int num_words);
 }
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void HardFault_Handler();
+
+#ifdef __cplusplus
+}
+#endif

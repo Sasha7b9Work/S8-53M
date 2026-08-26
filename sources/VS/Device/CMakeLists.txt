@@ -4,22 +4,23 @@ project (S8-53M2)
 
 set(CMAKE_UNITY_BUILD OFF)
 
-include_directories(../../common/_VS_GUI/CMSIS
-                    ../../STM32Cube_FW_F4/Drivers/STM32F4xx_HAL_Driver/Inc
-                    ../../STM32Cube_FW_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-                    ../../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-                    ../../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
-                    ../../STM32Cube_FW_F4/Middlewares/Third_Party/FatFs/src
+include_directories(
+    ../../common/_VS_GUI/CMSIS
+    ../../STM32Cube_FW_F4/Drivers/STM32F4xx_HAL_Driver/Inc
+    ../../STM32Cube_FW_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    ../../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+    ../../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
+    ../../STM32Cube_FW_F4/Middlewares/Third_Party/FatFs/src
 
-                    ../../VS/ThirdParty/wxWidgets/include 
-                    ../../generated/ThirdParty/lib/vc_dll/mswud
+    ../../VS/ThirdParty/wxWidgets/include 
+    ../../generated/ThirdParty/lib/vc_dll/mswud
 
-                    ../../Device/src
-                    ../../Device/src/libs
-                    ../../Device/src/Hardware/HAL
-                    ../../Device/src/Hardware/FDrive
-                    ../..
-                    )
+    ../../Device/src
+    ../../Device/src/libs
+    ../../Device/src/Hardware/HAL
+    ../../Device/src/Hardware/FDrive
+    ../..
+)
 
 link_directories(../../generated/ThirdParty/lib/vc_dll)
 
@@ -74,6 +75,7 @@ file(GLOB FPGA                            ../../Device/src/FPGA/*.*)
 file(GLOB HARDWARE                        ../../Device/src/Hardware/*.*)
 file(GLOB HARDWARE_HAL                    ../../Device/src/Hardware/HAL/*.*)
 file(GLOB MENU                            ../../Device/src/Menu/*.*)
+file(GLOB MENU_PAGES                      ../../Device/src/Menu/Pages/*.*)
 file(GLOB PANEL                           ../../Device/src/Panel/*.*)
 file(GLOB SETTINGS                        ../../Device/src/Settings/*.*)
 file(GLOB UTILS                           ../../Device/src/Utils/*.*)
@@ -96,6 +98,7 @@ source_group(FPGA                       FILES ${FPGA})
 source_group(Hardware                   FILES ${HARDWARE})
 source_group(Hardware/HAL               FILES ${HARDWARE_HAL})
 source_group(Menu                       FILES ${MENU})
+source_group(Menu/Pages                 FILES ${MENU_PAGES})
 source_group(Panel                      FILES ${PANEL})
 source_group(Settings                   FILES ${SETTINGS})
 source_group(Utils                      FILES ${UTILS})
@@ -105,20 +108,22 @@ source_group(Resources                  FILES ${RESOURCES})
 #set_source_files_properties(
 #                            PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
-add_executable( ${PROJECT_NAME}
-                ${SRC}
-                ${HAL}
-                ${DISPLAY}
-                ${FPGA}
-                ${HARDWARE} ${HARDWARE_HAL}
-                ${MENU}
-                ${PANEL}
-                ${SETTINGS}
-                ${UTILS} ${UTILS_CONTAINERS}
-                ${RESOURCES}
-                )
+add_executable(
+    ${PROJECT_NAME}
+    ${SRC}
+    ${HAL}
+    ${DISPLAY}
+    ${FPGA}
+    ${HARDWARE} ${HARDWARE_HAL}
+    ${MENU}
+    ${MENU_PAGES}
+    ${PANEL}
+    ${SETTINGS}
+    ${UTILS} ${UTILS_CONTAINERS}
+    ${RESOURCES}
+)
 
-target_link_libraries(${PROJECT_NAME} wxbase32ud wxmsw32ud_core)
+target_link_libraries(${PROJECT_NAME} wxbase33ud wxmsw33ud_core)
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase32ud_vc_custom.dll $(OutputPath) /Y)
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxmsw32ud_core_vc_custom.dll $(OutputPath) /Y)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase33ud_vc_custom.dll $(OutputPath) /Y)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxmsw33ud_core_vc_custom.dll $(OutputPath) /Y)

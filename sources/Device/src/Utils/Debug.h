@@ -10,7 +10,10 @@
 //#define POINT_PROFILING_MS Debug::PointProfilingMS(__FILE__, __LINE__)
 
 #define DEBUG_POINT(x) Debug::line[x] = __LINE__; Debug::file[x] = __FILE__;
-#define DEBUG_POINT_0  DEBUG_POINT(0)
+//#define DEBUG_POINT_0  DEBUG_POINT(0); Debug::Function();
+
+#define DEBUG_POINT_0
+
 
 namespace Debug
 {
@@ -28,8 +31,11 @@ namespace Debug
     extern int line[10];
     extern pchar file[10];
 
-    extern int posItem;
+    extern int count_data;
+    extern int *address_count_data;
+    extern uint *address_first_ds;
 
-    extern int counter;
-    extern int pushed;
+    void Function();
+
+    bool MemoryTest();
 };

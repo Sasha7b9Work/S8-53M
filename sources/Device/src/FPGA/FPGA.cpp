@@ -101,48 +101,87 @@ void FPGA::Init()
 
 void FPGA::Update()
 {
+    DEBUG_POINT_0
+
     FPGA::Reader::P2P::SavePoints();
+
+    DEBUG_POINT_0
 
     if (SET_SELFRECORDER)
     {
         return;
     }
 
+    DEBUG_POINT_0
+
     flag.Read();
+
+    DEBUG_POINT_0
 
     if (state.needCalibration)              // Если вошли в режим калибровки -
     {
+        DEBUG_POINT_0
+
         FPGA::Calibrator::RunCalibrate();       // выполняем её.
+
+        DEBUG_POINT_0
+
         state.needCalibration = false;
+
+        DEBUG_POINT_0
     }
+
+    DEBUG_POINT_0
 
     if(!CAN_READ_DATA)
     {
+        DEBUG_POINT_0
+
         return;
     }
+
+    DEBUG_POINT_0
 
     if (StateWorkFPGA::GetCurrent() == StateWorkFPGA::Stop)
     {
+        DEBUG_POINT_0
+
         return;
     }
 
+    DEBUG_POINT_0
+
     for (int i = 0; i < TBase::StretchRand(); i++)
     {
+        DEBUG_POINT_0
+
         ProcessingData();
+
+        DEBUG_POINT_0
 
         if (Flags::needFinishRead)
         {
+            DEBUG_POINT_0
+
             Flags::needFinishRead = false;
             break;
         }
 
+        DEBUG_POINT_0
+
         if (Panel::Data::Exist())
         {
+            DEBUG_POINT_0
+
             break;
         }
     }
 
+    DEBUG_POINT_0
+
     CAN_READ_DATA = false;
+
+    DEBUG_POINT_0
 }
 
 
@@ -155,54 +194,87 @@ void FPGA::DefferedTaskTrigLED()
 
 void FPGA::ProcessingData()
 {
+    DEBUG_POINT_0
+
     flag.Read();
+
+    DEBUG_POINT_0
 
     if (flag.Trig() && !LED::Trig.dontFireTrig)
     {
+        DEBUG_POINT_0
+
         LED::Trig.Enable();
+        DEBUG_POINT_0
+
         Timer::Disable(TypeTimer::DisableTrigLED);
+        DEBUG_POINT_0
     }
 
+    DEBUG_POINT_0
     if (NEED_AUTO_TRIG)
     {
+        DEBUG_POINT_0
         if (TIME_MS - timeStart > 500)
         {
+            DEBUG_POINT_0
             SwitchingTrig();
+            DEBUG_POINT_0
             LED::dontFireTrig = true;
             TRIG_AUTO_FIND = true;
             NEED_AUTO_TRIG = false;
+            DEBUG_POINT_0
         }
         else if (flag.Trig())
         {
+            DEBUG_POINT_0
             NEED_AUTO_TRIG = false;
             LED::dontFireTrig = false;
+            DEBUG_POINT_0
         }
     }
     else if (flag.Data())
     {
+        DEBUG_POINT_0
         Stop();
+        DEBUG_POINT_0
 
         Reader::DataRead();
 
+        DEBUG_POINT_0
+
         Timer::Enable(TypeTimer::DisableTrigLED, 500, DefferedTaskTrigLED);
+
+        DEBUG_POINT_0
 
         if (!START_MODE_IS_SINGLE)
         {
+            DEBUG_POINT_0
             Start();
+            DEBUG_POINT_0
             StateWorkFPGA::SetCurrent(StateWorkFPGA::Work);
+            DEBUG_POINT_0
         }
     }
     else
     {
+        DEBUG_POINT_0
         if (flag.Pred())
         {
+            DEBUG_POINT_0
             if (START_MODE_IS_AUTO)
             {
+                DEBUG_POINT_0
                 NEED_AUTO_TRIG = true;
+                DEBUG_POINT_0
             }
+            DEBUG_POINT_0
             timeStart = TIME_MS;
+            DEBUG_POINT_0
         }
+        DEBUG_POINT_0
     }
+    DEBUG_POINT_0
 }
 
 

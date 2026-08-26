@@ -15,13 +15,13 @@ cd ../..
 rmdir generated\GUI /s /q
 cd scripts/vs_gui
 @echo on
-cmake ../../VS/CMakeLists.txt -B../../generated/GUI  -G "Visual Studio 17 2022" -A Win32 -DCMAKE_BUILD_TYPE=Debug
+cmake ../../VS/CMakeLists.txt -B../../generated/GUI  -G "Visual Studio 18 2026" -A Win32 -DCMAKE_BUILD_TYPE=Debug
 @echo off
 
 :BUILDING
 if %isBuild%==0 goto EXIT
 @echo on
-MSBuild.exe ../../generated/GUI/S8-53M2_GUI.sln -clp:ErrorsOnly;WarningsOnly -nologo /m
+MSBuild.exe ../../generated/GUI/S8-53M2_GUI.slnx -clp:ErrorsOnly;WarningsOnly -nologo /m
 @echo off
 goto EXIT
 

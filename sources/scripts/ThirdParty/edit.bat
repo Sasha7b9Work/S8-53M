@@ -1,1 +1,1 @@
-start ..\..\generated\ThirdParty\wxWidgets.sln
+start ..\..\generated\ThirdParty\wxWidgets.slnx
