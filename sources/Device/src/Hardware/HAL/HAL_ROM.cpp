@@ -678,7 +678,7 @@ bool OTP::SaveSerialNumber(int number, int year)
 void HAL_ROM::WriteBufferBytes(uint address, const void *buffer, int size)
 {
     uint8 *bufferU8 = (uint8 *)buffer;
-    
+
     HAL_FLASH_Unlock();
 
     for (int i = 0; i < size; i++)

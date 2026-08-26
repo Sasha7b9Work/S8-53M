@@ -37,7 +37,6 @@ extern "C" {
             count_data = count_data;
             address_count_data = address_count_data;
             address_first_ds = address_first_ds;
-            int i = 0;
         }
     }
 
