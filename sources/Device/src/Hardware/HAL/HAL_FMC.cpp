@@ -122,7 +122,7 @@ void HAL_FMC::InitRAM()
     {
         1,                 // FSMC_AddressSetupTime
         1,                 // FSMC_AddressHoldTime
-        2,                 // FSMC_DataSetupTime
+        3,                 // FSMC_DataSetupTime
         1,                 // FSMC_BusTurnAroundDuration
         1,                 // FSMC_CLKDivision
         1,                 // FSMC_DataLatency

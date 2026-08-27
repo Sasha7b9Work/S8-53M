@@ -4,6 +4,7 @@
 #include "Hardware/HAL/HAL_ROM.h"
 #include "FPGA/SettingsFPGA.h"
 #include "Data/Data.h"
+#include <stm32f4xx.h>
 
 
 /*

@@ -37,11 +37,6 @@ int main()
 
     FPGA::Start();
     
-    for(int i = 0; i < 100; i++)
-    {
-        Debug::MemoryTest();
-    }
-      
     while(1)
     {
         DEBUG_POINT_0
