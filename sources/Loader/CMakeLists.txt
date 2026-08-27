@@ -2,22 +2,24 @@
 
 project (Loader)
 
-include_directories(../common/_VS_KEIL/ARMCLANG
-                    ../common/_VS_KEIL/CMSIS
-                    ../common/_VS_KEIL/FatFS
-                    ../STM32Cube_FW_F4/Drivers/STM32F4xx_HAL_Driver/Inc
-                    ../STM32Cube_FW_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include 
-                    ../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-                    ../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
-                    ../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-                    ../STM32Cube_FW_F4/Middlewares/Third_Party/FatFs/src
-                    ../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc
-                    ../STM32Cube_FW_F4/Middlewares/Third_Party/LwIP/src/include
-                    ../STM32Cube_FW_F4/Middlewares/Third_Party/LwIP/system
-                    src
-                    src/Hardware/HAL
-                    src/Hardware/FDrive
-                    ..)
+include_directories(
+    ../common/_VS_KEIL/ARMCLANG
+    ../common/_VS_KEIL/CMSIS
+    ../common/_VS_KEIL/FatFS
+    ../STM32Cube_FW_F4/Drivers/STM32F4xx_HAL_Driver/Inc
+    ../STM32Cube_FW_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include 
+    ../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+    ../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
+    ../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
+    ../STM32Cube_FW_F4/Middlewares/Third_Party/FatFs/src
+    ../STM32Cube_FW_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc
+    ../STM32Cube_FW_F4/Middlewares/Third_Party/LwIP/src/include
+    ../STM32Cube_FW_F4/Middlewares/Third_Party/LwIP/system
+    src
+    src/Hardware/HAL
+    src/Hardware/FDrive
+    ..
+)
 
 add_definitions(-DSTM32F429xx -DUSE_HAL_DRIVER -DLOADER)
 
@@ -138,8 +140,10 @@ source_group(Utils                 FILES ${UTILS})
 source_group(Utils/Containers      FILES ${UTILS_CONTAINERS})
 
                    
-add_library(${PROJECT_NAME} ${VS_KEIL_CMSIS} ${VS_KEIL_ARMCLANG} ${VS_KEIL_FATFS} ${LIBS_CMSIS}
-                            ${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBH}
-                            ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL} ${HARDWARE_FDRIVE}
-                            ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${DISPLAY_PAINTER} ${PANEL} ${SETTINGS}
-                            ${UTILS} ${UTILS_CONTAINERS})
+add_library(${PROJECT_NAME}
+    ${VS_KEIL_CMSIS} ${VS_KEIL_ARMCLANG} ${VS_KEIL_FATFS} ${LIBS_CMSIS}
+    ${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBH}
+    ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL} ${HARDWARE_FDRIVE}
+    ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${DISPLAY_PAINTER} ${PANEL} ${SETTINGS}
+    ${UTILS} ${UTILS_CONTAINERS}
+)

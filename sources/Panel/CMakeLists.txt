@@ -2,19 +2,20 @@
 
 project (Panel)
 
-include_directories(src
-                    src/Hardware/HAL
-                    ..
-                    ../common/_VS_KEIL/ARMCLANG
-                    ../common/_VS_KEIL/CMSIS
-                    ../STM32Cube_FW_L0/Drivers/STM32L0xx_HAL_Driver/Inc
-                    ../STM32Cube_FW_L0/Drivers/CMSIS/Device/ST/STM32L0xx/Include
-                    ../STM32Cube_FW_L0/Drivers/CMSIS/Include
+include_directories(
+    src
+    src/Hardware/HAL
+    ..
+    ../common/_VS_KEIL/ARMCLANG
+    ../common/_VS_KEIL/CMSIS
+    ../STM32Cube_FW_L0/Drivers/STM32L0xx_HAL_Driver/Inc
+    ../STM32Cube_FW_L0/Drivers/CMSIS/Device/ST/STM32L0xx/Include
+    ../STM32Cube_FW_L0/Drivers/CMSIS/Include
 if(WIN32)
 else()
-                    /usr/include/x86_64-linux-gnu
+    /usr/include/x86_64-linux-gnu
 endif()
-                    )
+)
 
 add_definitions(-DSTM32L063xx -DUSE_HAL_DRIVER)
 
@@ -60,4 +61,8 @@ source_group(libs/vs_keil/ARMCLANG FILES ${VS_KEIL_ARMCLANG})
 source_group(libs/vs_keil/CMSIS    FILES ${VS_KEIL_CMSIS})
 source_group(src                   FILES ${SRC})
 
-add_library(${PROJECT_NAME} ${VS_KEIL_ARMCLANG} ${VS_KEIL_CMSIS} ${SRC})
+add_library(${PROJECT_NAME}
+    ${VS_KEIL_ARMCLANG}
+    ${VS_KEIL_CMSIS}
+    ${SRC}
+)
