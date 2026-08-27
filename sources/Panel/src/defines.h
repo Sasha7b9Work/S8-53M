@@ -2,9 +2,11 @@
 #pragma once
 
 
-#pragma clang diagnostic ignored "-Winvalid-source-encoding"
-#pragma clang diagnostic ignored "-Wmissing-field-initializers"
-#pragma clang diagnostic ignored "-Wunused-parameter"
+#ifndef WIN32
+    #pragma clang diagnostic ignored "-Winvalid-source-encoding"
+    #pragma clang diagnostic ignored "-Wmissing-field-initializers"
+    #pragma clang diagnostic ignored "-Wunused-parameter"
+#endif
 
 
 typedef unsigned char     uint8;

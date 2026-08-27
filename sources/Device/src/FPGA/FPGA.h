@@ -64,7 +64,7 @@ namespace FPGA
 
         uint16 Read()
         {
-            value = HAL_FMC::Read(RD_FL);
+            value = HAL_FMC::FPGA::Read(RD_FL);
             FreqMeter::Update(value);
             return value;
         }

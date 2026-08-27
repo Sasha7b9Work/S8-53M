@@ -123,9 +123,3 @@ void HAL_FMC::InitRAM()
 
     HAL_SRAM_Init(&gSramHandle, timing, timing);
 }
-
-
-void HAL_FMC::Write(uint16 * const address, uint16 value)
-{
-    *address = value;
-}

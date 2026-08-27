@@ -24,11 +24,11 @@ extern "C" {
 
     void HardFault_Handler()
     {
-        volatile int line = Debug::line[0];
-        volatile pchar file = Debug::file[0];
-        volatile int count_data = Debug::count_data;
-        volatile int *address_count_data = Debug::address_count_data;
-        volatile uint *address_first_ds = Debug::address_first_ds;
+//        volatile int line = Debug::line[0];
+//        volatile pchar file = Debug::file[0];
+//        volatile int count_data = Debug::count_data;
+//        volatile int *address_count_data = Debug::address_count_data;
+//        volatile uint *address_first_ds = Debug::address_first_ds;
 
         while (1) //-V776
         {

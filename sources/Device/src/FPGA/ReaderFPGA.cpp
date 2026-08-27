@@ -44,8 +44,8 @@ void FPGA::Reader::ReadPoints(Chan ch, uint8 *first, const uint8 *last)
 {
     uint16 address = Reader::CalculateAddressRead();
 
-    HAL_FMC::Write(WR_PRED, address);
-    HAL_FMC::Write(WR_ADDR_READ, 0xffff);
+    HAL_FMC::FPGA::Write(WR_PRED, address);
+    HAL_FMC::FPGA::Write(WR_ADDR_READ, 0xffff);
 
     typedef BitSet16(*pFuncRead)();
 
@@ -133,17 +133,17 @@ void FPGA::Reader::Read1024Points(uint8 buffer[1024], Chan ch)
 
     Timer::PauseOnTime(8);
 
-    uint16 fl = HAL_FMC::Read(RD_FL);
+    uint16 fl = HAL_FMC::FPGA::Read(RD_FL);
 
-    while (_GET_BIT(fl, FL_PRED) == 0) { fl = HAL_FMC::Read(RD_FL); }
+    while (_GET_BIT(fl, FL_PRED) == 0) { fl = HAL_FMC::FPGA::Read(RD_FL); }
 
     FPGA::SwitchingTrig();
 
-    while (_GET_BIT(fl, FL_TRIG) == 0) { fl = HAL_FMC::Read(RD_FL); }
+    while (_GET_BIT(fl, FL_TRIG) == 0) { fl = HAL_FMC::FPGA::Read(RD_FL); }
 
     Timer::PauseOnTime(8);
 
-    while (_GET_BIT(fl, FL_DATA) == 0) { fl = HAL_FMC::Read(RD_FL); }
+    while (_GET_BIT(fl, FL_DATA) == 0) { fl = HAL_FMC::FPGA::Read(RD_FL); }
 
     FPGA::Stop();
 
@@ -173,7 +173,7 @@ void FPGA::Reader::P2P::ReadPoints()
 
             if (SET_SELFRECORDER)
             {
-                HAL_FMC::Write(WR_START, 1);
+                HAL_FMC::FPGA::Write(WR_START, 1);
             }
         }
     }
@@ -242,8 +242,8 @@ void FPGA::Reader::ReadPoints(Chan ch, DataStruct &data_out)
         address = Reader::CalculateAddressRead();
     }
 
-    HAL_FMC::Write(WR_PRED, address);
-    HAL_FMC::Write(WR_ADDR_READ, 0xffff);
+    HAL_FMC::FPGA::Write(WR_PRED, address);
+    HAL_FMC::FPGA::Write(WR_ADDR_READ, 0xffff);
 
     uint8 *const begin = data_out.Data(ch).Data();
     const uint8 *const end = data_out.Data(ch).Last();

@@ -286,8 +286,8 @@ void FPGA::SwitchingTrig()
         {0, 1}
     };
 
-    HAL_FMC::Write(WR_TRIG, value[TRIG_POLARITY][0]);
-    HAL_FMC::Write(WR_TRIG, value[TRIG_POLARITY][1]);
+    HAL_FMC::FPGA::Write(WR_TRIG, value[TRIG_POLARITY][0]);
+    HAL_FMC::FPGA::Write(WR_TRIG, value[TRIG_POLARITY][1]);
 }
 
 
@@ -314,8 +314,8 @@ void FPGA::Start()
 
     meterStart.Reset();
 
-    HAL_FMC::Write(WR_PRED, FPGA::Launch::PredForWrite());
-    HAL_FMC::Write(WR_START, 1);
+    HAL_FMC::FPGA::Write(WR_PRED, FPGA::Launch::PredForWrite());
+    HAL_FMC::FPGA::Write(WR_START, 1);
 
     timeStart = TIME_MS;
     StateWorkFPGA::SetCurrent(StateWorkFPGA::Wait);
@@ -338,7 +338,7 @@ void FPGA::Stop()
     {
         Timer::Disable(TypeTimer::P2P);
 
-        HAL_FMC::Write(WR_STOP, 1);
+        HAL_FMC::FPGA::Write(WR_STOP, 1);
 
         StateWorkFPGA::SetCurrent(StateWorkFPGA::Stop);
     }
@@ -534,7 +534,7 @@ void BUS_FPGA::Write(uint16 *address, uint16 data, bool restart)
         FPGA::Stop();
     }
 
-    HAL_FMC::Write(address, data);
+    HAL_FMC::FPGA::Write(address, data);
 
     if (is_running && restart)
     {

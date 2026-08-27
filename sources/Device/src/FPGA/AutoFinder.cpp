@@ -189,9 +189,9 @@ bool FPGA::AutoFinder::DataFinder::ReadDataWithoutSynchronization(Chan ch)
 {
     Fill(ValueFPGA::NONE);
 
-    HAL_FMC::Write(WR_PRED, (uint16)(~(Size() / 2 + 20)));
-    HAL_FMC::Write(WR_POST, (uint16)(~(Size() / 2 + 20)));
-    HAL_FMC::Write(WR_START, 1);
+    HAL_FMC::FPGA::Write(WR_PRED, (uint16)(~(Size() / 2 + 20)));
+    HAL_FMC::FPGA::Write(WR_POST, (uint16)(~(Size() / 2 + 20)));
+    HAL_FMC::FPGA::Write(WR_START, 1);
 
     while (_GET_BIT(flag.Read(), FL_PRED) == 0) { }
 
@@ -199,9 +199,9 @@ bool FPGA::AutoFinder::DataFinder::ReadDataWithoutSynchronization(Chan ch)
 
     while(_GET_BIT(flag.Read(), FL_DATA) == 0) { }
 
-    uint16 address = (uint16)(HAL_FMC::Read(RD_ADDR_LAST_RECORD) - Size() - 2);
-    HAL_FMC::Write(WR_PRED, address);
-    HAL_FMC::Write(WR_ADDR_READ, 0xffff);
+    uint16 address = (uint16)(HAL_FMC::FPGA::Read(RD_ADDR_LAST_RECORD) - Size() - 2);
+    HAL_FMC::FPGA::Write(WR_PRED, address);
+    HAL_FMC::FPGA::Write(WR_ADDR_READ, 0xffff);
 
     typedef BitSet16 (*pFuncRead)();
 

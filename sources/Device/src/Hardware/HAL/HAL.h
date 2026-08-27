@@ -80,9 +80,24 @@ namespace HAL_FMC
 {
     void Init();
 
-    inline uint16 Read(volatile const uint16 *const address) { return *address; };
+    namespace FPGA
+    {
+        inline uint16 Read(uint16 *address)
+        {
+            return *address;
+        }
 
-    void Write(uint16 *const address, uint16 value);
+        inline void Write(uint16 *const address, uint16 value)
+        {
+            *address = value;
+        }
+    }
+
+    namespace RAM
+    {
+        void InitWrite();
+        void InitRead();
+    }
 
     static const uint RAM_SIZE = 1024 * 1024;
 

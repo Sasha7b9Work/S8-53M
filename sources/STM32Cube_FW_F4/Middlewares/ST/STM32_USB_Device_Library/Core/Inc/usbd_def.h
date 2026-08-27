@@ -194,6 +194,10 @@ extern "C" {
   * @{
   */
 
+#ifdef _WIN32
+    #define __PACKED
+#endif
+
 typedef  struct  usb_setup_req
 {
   uint8_t   bmRequest;
@@ -433,7 +437,7 @@ __STATIC_INLINE uint16_t SWAPBYTE(uint8_t *addr)
   _pbuff++;
   _Byte2 = *(uint8_t *)_pbuff;
 
-  _SwapVal = (_Byte2 << 8) | _Byte1;
+  _SwapVal = (uint16_t)((_Byte2 << 8) | _Byte1);
 
   return _SwapVal;
 }

@@ -110,8 +110,8 @@ float FPGA::FreqMeter::GetFreq()
 BitSet32 FPGA::FreqMeter::ReadRegFreq()
 {
     BitSet32 fr;
-    fr.half_word[0] = HAL_FMC::Read(RD_FREQ_LOW);
-    fr.half_word[1] = HAL_FMC::Read(RD_FREQ_HI);
+    fr.half_word[0] = HAL_FMC::FPGA::Read(RD_FREQ_LOW);
+    fr.half_word[1] = HAL_FMC::FPGA::Read(RD_FREQ_HI);
     return fr;
 }
 
@@ -119,8 +119,8 @@ BitSet32 FPGA::FreqMeter::ReadRegFreq()
 BitSet32 FPGA::FreqMeter::ReadRegPeriod()
 {
     BitSet32 period;
-    period.half_word[0] = HAL_FMC::Read(RD_PERIOD_LOW);
-    period.half_word[1] = HAL_FMC::Read(RD_PERIOD_HI);
+    period.half_word[0] = HAL_FMC::FPGA::Read(RD_PERIOD_LOW);
+    period.half_word[1] = HAL_FMC::FPGA::Read(RD_PERIOD_HI);
 
     return period;
 }
@@ -130,8 +130,8 @@ BitSet32 FPGA::FreqMeter::ReadRegFrequency()
 {
     BitSet32 fr;
 
-    fr.half_word[0] = (uint8)HAL_FMC::Read(RD_FREQ_LOW);
-    fr.half_word[1] = (uint8)HAL_FMC::Read(RD_FREQ_HI);
+    fr.half_word[0] = (uint8)HAL_FMC::FPGA::Read(RD_FREQ_LOW);
+    fr.half_word[1] = (uint8)HAL_FMC::FPGA::Read(RD_FREQ_HI);
 
     return fr;
 }
@@ -211,13 +211,13 @@ float FPGA::FreqMeter::CalculateFrequencyFromCounterFrequency()
 {
     frequency = 0.0f;
 
-    while (_GET_BIT(HAL_FMC::Read(RD_FL), FL_FREQ) == 0)
+    while (_GET_BIT(HAL_FMC::FPGA::Read(RD_FL), FL_FREQ) == 0)
     {
     };
 
     ReadRegFrequency();
 
-    while (_GET_BIT(HAL_FMC::Read(RD_FL), FL_FREQ) == 0)
+    while (_GET_BIT(HAL_FMC::FPGA::Read(RD_FL), FL_FREQ) == 0)
     {
     };
 
@@ -238,7 +238,7 @@ float FPGA::FreqMeter::CalculateFrequencyFromCounterPeriod()
 
     uint time = TIME_MS;
 
-    while (TIME_MS - time < 1000 && _GET_BIT(HAL_FMC::Read(RD_FL), FL_PERIOD) == 0)
+    while (TIME_MS - time < 1000 && _GET_BIT(HAL_FMC::FPGA::Read(RD_FL), FL_PERIOD) == 0)
     {
     };
 
@@ -246,7 +246,7 @@ float FPGA::FreqMeter::CalculateFrequencyFromCounterPeriod()
 
     time = TIME_MS;
 
-    while (TIME_MS - time < 1000 && _GET_BIT(HAL_FMC::Read(RD_FL), FL_PERIOD) == 0)
+    while (TIME_MS - time < 1000 && _GET_BIT(HAL_FMC::FPGA::Read(RD_FL), FL_PERIOD) == 0)
     {
     };
 
