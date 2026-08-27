@@ -2,13 +2,13 @@
 #pragma once
 
 #ifdef WIN32
-#define __attribute(x)
-#define __weak
-#define __STATIC_INLINE inline
-#define __RBIT(VAL) 0
-#define __CLZ(x) 0
+    #define __attribute(x)
+    #define __weak
+    #define __STATIC_INLINE inline
+    #define __RBIT(VAL) 0
+//    #define __CLZ(x) 0
 #else
-#define __weak __attribute((weak))
+    #define __weak __attribute((weak))
 #endif
 
 

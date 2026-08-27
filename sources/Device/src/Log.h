@@ -4,7 +4,7 @@
 
 
 #ifdef WIN32
-#define __MODULE__ ""
+    #define __FILE_NAME__ __FILE__
 #endif
 
 #ifdef DEBUG

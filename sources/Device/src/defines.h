@@ -4,6 +4,7 @@
 #define DEVELOPER_VERSION "1.0.21"
 
 
+#ifndef WIN32
 #pragma clang diagnostic ignored "-Winvalid-source-encoding"
 #pragma clang diagnostic ignored "-Wmissing-field-initializers"
 #pragma clang diagnostic ignored "-Wwritable-strings"
@@ -11,6 +12,7 @@
 #pragma clang diagnostic ignored "-Wunused-variable"
 #pragma clang diagnostic ignored "-Wunused-parameter"
 #pragma clang diagnostic ignored "-Wchar-subscripts"
+#endif
 
 
 #ifdef WIN32

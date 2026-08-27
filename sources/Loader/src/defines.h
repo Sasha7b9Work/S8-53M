@@ -3,10 +3,12 @@
 #include "defines_.h"
 
 
+#ifndef WIN32
 #pragma clang diagnostic ignored "-Winvalid-source-encoding"
 #pragma clang diagnostic ignored "-Wmissing-field-initializers"
 #pragma clang diagnostic ignored "-Wwritable-strings"
 #pragma clang diagnostic ignored "-Wunused-function"
+#endif
 
 
 #ifndef __cplusplus

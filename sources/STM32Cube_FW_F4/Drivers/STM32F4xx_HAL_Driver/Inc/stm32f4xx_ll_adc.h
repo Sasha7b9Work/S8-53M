@@ -4060,6 +4060,7 @@ __STATIC_INLINE uint8_t LL_ADC_REG_ReadConversionData6(const ADC_TypeDef *ADCx)
   */
 __STATIC_INLINE uint32_t LL_ADC_REG_ReadMultiConversionData32(const ADC_Common_TypeDef *ADCxy_COMMON, uint32_t ConversionData)
 {
+    (void)ConversionData;
   return (uint32_t)(READ_BIT(ADCxy_COMMON->CDR,
                              ADC_DR_ADC2DATA)
                     >> POSITION_VAL(ConversionData)
