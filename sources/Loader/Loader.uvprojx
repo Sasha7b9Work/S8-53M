@@ -10,7 +10,8 @@
       <TargetName>Release</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC536</pCCUsed>
+      <pArmCC>5060960::V5.06 update 7 (build 960)::.\ARMCC_536_5_06_7</pArmCC>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC_536_5_06_7</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>

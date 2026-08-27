@@ -332,7 +332,7 @@ static bool FPGA::Calibrator::CalibrateStretch(Chan ch)
 
     float stretch = CalculateStretch(min, max);
 
-    if (stretch < 0.8f || stretch > 1.2f)
+    if (stretch < 0.5f || stretch > 1.5f)
     {
         return false;
     }
