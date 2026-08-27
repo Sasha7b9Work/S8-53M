@@ -1,10 +1,12 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2026/08/27 16:14:50 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
 #include "Hardware/LAN/LAN.h"
 
 
-bool LAN::cableIsConnected = false;
-bool LAN::clientIsConnected = false;
+namespace LAN
+{
+    bool cableIsConnected = false;
+}
 
 void LAN::Init()
 {
@@ -12,13 +14,19 @@ void LAN::Init()
 }
 
 
-void LAN::SendBuffer(const uint8 *, int)
+void LAN::Update()
 {
 
 }
 
 
-void LAN::SendMessage(pchar)
+bool LAN::ClientIsConnected()
+{
+    return false;
+}
+
+
+void LAN::SendBuffer(const void * /*buffer*/, int /*length*/)
 {
 
 }

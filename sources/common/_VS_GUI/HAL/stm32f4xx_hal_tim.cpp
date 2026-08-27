@@ -30,3 +30,9 @@ HAL_StatusTypeDef HAL_TIMEx_MasterConfigSynchronization(TIM_HandleTypeDef *, TIM
 {
     return HAL_ERROR;
 }
+
+
+HAL_StatusTypeDef HAL_TIMEx_MasterConfigSynchronization(TIM_HandleTypeDef * /*htim*/, const TIM_MasterConfigTypeDef * /*sMasterConfig*/)
+{
+    return HAL_OK;
+}

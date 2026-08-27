@@ -38,3 +38,9 @@ HAL_StatusTypeDef HAL_LTDC_EnableCLUT(LTDC_HandleTypeDef *hltdc, uint32_t LayerI
 
     return HAL_OK;
 }
+
+
+HAL_StatusTypeDef HAL_LTDC_ConfigCLUT(LTDC_HandleTypeDef * /*hltdc*/, const uint32_t * /*pCLUT*/, uint32_t /*CLUTSize*/, uint32_t /*LayerIdx*/)
+{
+    return HAL_OK;
+}

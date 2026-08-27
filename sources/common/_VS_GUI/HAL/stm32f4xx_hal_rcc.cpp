@@ -25,3 +25,15 @@ HAL_StatusTypeDef HAL_RCCEx_PeriphCLKConfig(RCC_PeriphCLKInitTypeDef *)
 {
     return HAL_OK;
 }
+
+
+HAL_StatusTypeDef HAL_RCC_OscConfig(const RCC_OscInitTypeDef  * /*RCC_OscInitStruct*/)
+{
+    return HAL_OK;
+}
+
+
+HAL_StatusTypeDef HAL_RCC_ClockConfig(const RCC_ClkInitTypeDef * /*RCC_ClkInitStruct*/, uint32_t /*FLatency*/)
+{
+    return HAL_OK;
+}

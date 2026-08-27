@@ -1,5 +1,6 @@
 // 2022/2/11 19:49:30 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #include "defines.h"
+#include "common/Panel/Controls.h"
 #include "Panel.h"
 #include "FPGA/FPGA.h"
 #include "Utils/Math.h"

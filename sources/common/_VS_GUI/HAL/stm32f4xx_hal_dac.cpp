@@ -42,3 +42,15 @@ HAL_StatusTypeDef HAL_DAC_ConfigChannel(DAC_HandleTypeDef *, DAC_ChannelConfType
 {
     return HAL_OK;
 }
+
+
+HAL_StatusTypeDef HAL_DAC_Start_DMA(DAC_HandleTypeDef * /*hdac*/, uint32_t /*Channel*/, const uint32_t * /*pData*/, uint32_t /*Length*/, uint32_t /*Alignment*/)
+{
+    return HAL_OK;
+}
+
+
+HAL_StatusTypeDef HAL_DAC_ConfigChannel(DAC_HandleTypeDef * /*hdac*/, const DAC_ChannelConfTypeDef * /*sConfig*/, uint32_t /*Channel*/)
+{
+    return HAL_OK;
+}

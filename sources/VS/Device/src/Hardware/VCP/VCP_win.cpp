@@ -3,7 +3,26 @@
 #include "Hardware/VCP/VCP.h"
 
 
+namespace VCP
+{
+    bool cableIsConnected = false;
+    bool connectToHost = false;
+}
+
+
 void VCP::Init()
+{
+
+}
+
+
+void VCP::Buffer::Send(const void * /*buf*/, int /*size*/)
+{
+
+}
+
+
+void VCP::Buffer::Flush()
 {
 
 }
