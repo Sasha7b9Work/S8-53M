@@ -34,6 +34,7 @@ if(WIN32)
         /wd4201
         /wd4211
         /wd4244
+        /wd4302     # 'type cast': truncation from 'x **' to 'x'
         /wd4310     # cast truncates constant value
         /wd4514     # 'function' : unreferenced inline function has been removed
         /wd4623     # 'derived class' : default constructor was implicitly defined as deleted because a base
@@ -112,21 +113,24 @@ source_group(Utils/Text            FILES ${UTILS_TEXT})
 source_group(SCPI                  FILES ${SCPI})
 source_group(libs/HAL              FILES $${LIBS_HAL})
 
-set_source_files_properties(src/Hardware/LAN/ethernetif.cpp
-                            src/Menu/Pages/PageHelp.cpp
-                            src/Panel/PanelFunctions.cpp
-                            ${LIBS_HAL}
-                            PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties(
+    /Hardware/LAN/ethernetif.cpp
+    src/Menu/Pages/PageHelp.cpp
+    src/Panel/PanelFunctions.cpp
+    ${LIBS_HAL}
+    PROPERTIES HEADER_FILE_ONLY TRUE
+)
 
-add_library(${PROJECT_NAME} ${SRC} ${DISPLAY}
-                            ${DISPLAY_FONT} ${DISPLAY_SCREEN}
-                            ${HARDWARE_LAN}
-                            ${DATA}
-                            ${HARDWARE_FDRIVE} ${FPGA} ${HARDWARE}
-                            ${HARDWARE_HAL} ${HARDWARE_VCP}
-                            ${MENU} ${MENU_PAGES} ${MENU_PAGES_MEMORY}
-                            ${PANEL} ${SETTINGS}
-                            ${UTILS} ${UTILS_CONTAINERS} ${UTILS_TEXT}
-                            ${SCPI}
-                            ${LIBS_HAL}
+add_library(${PROJECT_NAME}
+    ${SRC} ${DISPLAY}
+    ${DISPLAY_FONT} ${DISPLAY_SCREEN}
+    ${HARDWARE_LAN}
+    ${DATA}
+    ${HARDWARE_FDRIVE} ${FPGA} ${HARDWARE}
+    ${HARDWARE_HAL} ${HARDWARE_VCP}
+    ${MENU} ${MENU_PAGES} ${MENU_PAGES_MEMORY}
+    ${PANEL} ${SETTINGS}
+    ${UTILS} ${UTILS_CONTAINERS} ${UTILS_TEXT}
+    ${SCPI}
+    ${LIBS_HAL}
 )

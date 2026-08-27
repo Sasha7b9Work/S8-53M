@@ -68,6 +68,10 @@ typedef enum
   RX_ALLOC_ERROR    = 0x01
 } RxAllocStatusTypeDef;
 
+#ifdef _WIN32
+#define __ALIGNED(x)
+#endif
+
 typedef struct
 {
   struct pbuf_custom pbuf_custom;
@@ -154,8 +158,10 @@ static void low_level_init(struct netif *netif)
   */
 static err_t low_level_output(struct netif *netif, struct pbuf *p)
 {
-  err_t errval = ERR_OK;
-  return errval;
+    (void)netif;
+    (void)p;
+    err_t errval = ERR_OK;
+    return errval;
 }
 
 
@@ -169,6 +175,7 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   */
 static struct pbuf * low_level_input(struct netif *netif)
 {
+    (void)netif;
   struct pbuf *p = NULL;
 
   if(RxAllocStatus == RX_ALLOC_OK)
@@ -288,6 +295,7 @@ u32_t sys_now(void)
 
 void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 {
+    (void)heth;
     /* Enable GPIOs clocks */
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -372,7 +380,7 @@ int32_t ETH_PHY_IO_WriteReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t RegVal)
   */
 int32_t ETH_PHY_IO_GetTick(void)
 {
-  return HAL_GetTick();
+  return (int32_t)HAL_GetTick();
 }
 
 /**
@@ -381,6 +389,7 @@ int32_t ETH_PHY_IO_GetTick(void)
   */
 void ethernet_link_check_state(struct netif *netif)
 {
+    (void)netif;
   /*
   ETH_MACConfigTypeDef MACConf = {0};
   int32_t PHYLinkState = 0U;
@@ -422,6 +431,9 @@ void HAL_ETH_RxAllocateCallback(uint8_t **buff)
   struct pbuf_custom *p = (pbuf_custom *)LWIP_MEMPOOL_ALLOC(RX_POOL);
   if (p)
   {
+#ifdef _WIN32
+#define offsetof(x, y) (uint8_t)y
+#endif
     /* Get the buff from the struct pbuf address. */
     *buff = (uint8_t *)p + offsetof(RxBuff_t, buff);
     p->custom_free_function = pbuf_free_custom;
