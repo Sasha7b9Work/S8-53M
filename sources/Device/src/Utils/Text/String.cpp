@@ -88,7 +88,9 @@ int String<capa>::Draw(int x, int y, Color::E color)
 }
 
 
+#ifndef _WIN32
 #pragma clang diagnostic ignored "-Wnonnull"
+#endif
 
 
 template<int capacity>
