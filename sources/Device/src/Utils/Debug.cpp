@@ -4,6 +4,7 @@
 #include "Utils/Debug.h"
 #include "Hardware/Timer.h"
 #include "Data/Storage.h"
+#include <cstdlib>
 
 
 static uint timeStart;
@@ -95,15 +96,26 @@ void Debug::Function()
 bool Debug::MemoryTest()
 {
     uint16 *end = (uint16 *)(HAL_FMC::ADDR_RAM_BEGIN + HAL_FMC::RAM_SIZE);
-
-    for (uint16 *address = (uint16 *)HAL_FMC::ADDR_RAM_BEGIN; address < end; address++)
+    
+    static const int SIZE_BUFFER = 1024;
+    static uint16 buffer[SIZE_BUFFER];
+    
+    for (uint16 *address = (uint16 *)HAL_FMC::ADDR_RAM_BEGIN; address < end; address += SIZE_BUFFER)
     {
-        *address = (uint16)((uint)address);
-    }
+        uint16 value = (uint16)std::rand();
+        
+        for (int i = 0; i < SIZE_BUFFER; i++)
+        {
+            buffer[i] = value++;
+        }
 
-    for (uint16 *address = (uint16 *)HAL_FMC::ADDR_RAM_BEGIN; address < end; address++)
-    {
-        if (*address != (uint16)((uint)address))
+        HAL_FMC::RAM::WriteBuffer16(address, buffer, SIZE_BUFFER);
+
+        static uint16 in[SIZE_BUFFER];
+
+        HAL_FMC::RAM::ReadBuffer16(in, address, SIZE_BUFFER);
+
+        if (std::memcmp(buffer, in, SIZE_BUFFER * 2) != 0)
         {
             return false;
         }

@@ -95,8 +95,14 @@ namespace HAL_FMC
 
     namespace RAM
     {
+        // Ќастроить параметры шины дл€ работы с RAM
+        void Tune();
+
         void InitWrite();
         void InitRead();
+
+        void WriteBuffer16(uint16 *address, uint16 *source, uint size);
+        void ReadBuffer16(uint16 *destination, uint16 *address, uint size);
     }
 
     static const uint RAM_SIZE = 1024 * 1024;
