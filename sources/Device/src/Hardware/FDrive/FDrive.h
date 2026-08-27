@@ -1,6 +1,6 @@
 // 2022/02/11 17:48:27 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
 #pragma once
-#include "defines.h"
+#include "Utils/Text/String.h"
 
 #ifdef _MS_VS
 #undef _WIN32

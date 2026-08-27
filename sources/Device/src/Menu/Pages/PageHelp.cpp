@@ -1,7 +1,9 @@
 // 2022/2/11 19:49:24 (c) Aleksandr Shevchenko e-mail : Sasha7b9@gmail.com
+#include "defines.h"
 #include "Menu/MenuItems.h"
 #include "Definition.h"
 #include "HelpContent.h"
+#include "Utils/Text/Text.h"
 
 
 void DrawSB_Help_ParagraphEnter(int x, int y)
