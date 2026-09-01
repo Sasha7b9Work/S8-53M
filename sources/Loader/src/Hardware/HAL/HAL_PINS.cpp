@@ -229,11 +229,11 @@ void HAL_PINS::Init()
 
     Pin pinRL(PinMode::_Output, PinPort::_G, PinPin::_13);      // ¬ыбор горизонтальной ориентации диспле€ R/L
     pinRL.Init();
-    pinRL.Reset();
+    pinRL.Set();
 
     Pin pinUD(PinMode::_Output, PinPort::_G, PinPin::_10);      // ¬ыбор вертикальной ориентации диспле€ U/D
     pinUD.Init();
-    pinUD.Set();
+    pinUD.Reset();
 
     PinLTDC(I, 9).Init();       // VSYNC    11
     PinLTDC(C, 6).Init();       // HSYNC    115
