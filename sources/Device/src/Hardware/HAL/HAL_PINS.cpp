@@ -352,7 +352,7 @@ void Pin::Init()
     {
         isGPIO.Pull = GPIO_PULLDOWN;
         isGPIO.Mode = GPIO_MODE_AF_PP;
-        isGPIO.Speed = GPIO_SPEED_FREQ_LOW;
+        isGPIO.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
         isGPIO.Alternate = GPIO_AF14_LTDC;
     }
 
