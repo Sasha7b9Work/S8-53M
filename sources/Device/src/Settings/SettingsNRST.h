@@ -44,7 +44,7 @@ struct SettingsNRST
     int16   fpga_gates_min;         // \ Минимальные и максимальные значения, за пределами которых нужно отбрасывать
     int16   fpga_gates_max;         // /
 
-    int16   first_byte;
+    int16   _not_used_first_byte;
 
     int16   balanceADC[Chan::Count];        // Баланс АЦП (смещение первой точки относительно второй) для обоих каналов
     int16   hand_rshift[Chan::Count][3];    // Вручную устанавливаемое дополнительное смещение. Для закрытого входа и 2мВ, 5мВ, 10мВ

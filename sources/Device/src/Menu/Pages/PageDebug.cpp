@@ -274,23 +274,13 @@ static const Choice mcADC_Compact =
 };
 
 
-static const Governor mgADC_FirstByte
-(
-    PageDebug::_ADC::self, nullptr,
-    "Первый байт", "First byte",
-    "", "",
-    &nrst.first_byte, -5, 5, nullptr, nullptr
-);
-
-
 static const arrayItems itemsADC =
 {
     (void *)PageDebug::_ADC::Balance::self,
     (void *)PageDebug::_ADC::Stretch::self,
     (void *)PageDebug::_ADC::Shift::self,
     (void *)PageDebug::_ADC::AltShift::self,
-    (void *)&mcADC_Compact,
-    (void *)&mgADC_FirstByte
+    (void *)&mcADC_Compact
 };
 
 
