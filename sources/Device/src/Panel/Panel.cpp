@@ -558,9 +558,7 @@ namespace Panel
             }
         }
 
-        __disable_irq();
         gset.Save();
-        __enable_irq();
 
         while (true)
         {

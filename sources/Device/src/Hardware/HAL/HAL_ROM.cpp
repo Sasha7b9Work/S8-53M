@@ -41,7 +41,7 @@
 #define ADDR_SECTOR_DATA_INFO       ((uint)0x08100000)  // 12 16k  Информация о сохранённых данных
 #define ADDR_SECTOR_13              ((uint)0x08104000)  // 13 16k
 #define ADDR_SECTOR_14              ((uint)0x08108000)  // 14 16k
-#define ADDR_SECTOR_15              ((uint)0x0810С000)  // 15 16k
+#define ADDR_SECTOR_15              ((uint)0x0810C000)  // 15 16k
 #define ADDR_SECTOR_16              ((uint)0x08110000)  // 16 64k
 #define ADDR_SECTOR_17              ((uint)0x08120000)  // 17 128k
 #define ADDR_SECTOR_18              ((uint)0x08140000)  // 18 128k
@@ -607,12 +607,30 @@ uint HAL_ROM::GetSector(uint startAddress)
 {
     switch (startAddress)
     {
-    case ADDR_SECTOR_NRST:          return FLASH_SECTOR_4;
-    case ADDR_SECTOR_SETTINGS:      return FLASH_SECTOR_11;
-    case ADDR_SECTOR_DATA_INFO:     return FLASH_SECTOR_12;
-    case ADDR_SECTOR_DATA_FIRST:    return FLASH_SECTOR_21;
-    case ADDR_SECTOR_DATA_2:        return FLASH_SECTOR_22;
-    case ADDR_SECTOR_DATA_LATEST:   return FLASH_SECTOR_23;
+    case ADDR_SECTOR_0:             return FLASH_SECTOR_0;   //  0 16k
+    case ADDR_SECTOR_1:             return FLASH_SECTOR_1;   //  1 16k
+    case ADDR_SECTOR_2:             return FLASH_SECTOR_2;   //  2 16k
+    case ADDR_SECTOR_3:             return FLASH_SECTOR_3;   //  3 16k
+    case ADDR_SECTOR_NRST:          return FLASH_SECTOR_4;   //  4 64k  SettingsNRST
+    case ADDR_FIRMWARE_1:           return FLASH_SECTOR_5;   //  5 128k / 
+    case ADDR_FIRMWARE_2:           return FLASH_SECTOR_6;   //  6 128k |- Основная прошивка
+    case ADDR_FIRMWARE_3:           return FLASH_SECTOR_7;   //  7 128k /
+    case ADDR_SECTOR_8:             return FLASH_SECTOR_8;   //  8 128k
+    case ADDR_SECTOR_9:             return FLASH_SECTOR_9;   //  9 128k
+    case ADDR_SECTOR_10:            return FLASH_SECTOR_10;  // 10 128k
+    case ADDR_SECTOR_SETTINGS:      return FLASH_SECTOR_11;  // 11 128k Настройки
+    case ADDR_SECTOR_DATA_INFO:     return FLASH_SECTOR_12;  // 12 16k  Информация о сохранённых данных
+    case ADDR_SECTOR_13:            return FLASH_SECTOR_13;  // 13 16k
+    case ADDR_SECTOR_14:            return FLASH_SECTOR_14;  // 14 16k
+    case ADDR_SECTOR_15:            return FLASH_SECTOR_15;  // 15 16k
+    case ADDR_SECTOR_16:            return FLASH_SECTOR_16;  // 16 64k
+    case ADDR_SECTOR_17:            return FLASH_SECTOR_17;  // 17 128k
+    case ADDR_SECTOR_18:            return FLASH_SECTOR_18;  // 18 128k
+    case ADDR_SECTOR_19:            return FLASH_SECTOR_19;  // 19 128k
+    case ADDR_SECTOR_20:            return FLASH_SECTOR_20;  // 20 128k
+    case ADDR_SECTOR_DATA_FIRST:    return FLASH_SECTOR_21;  // 21 128k
+    case ADDR_SECTOR_DATA_2:        return FLASH_SECTOR_22;  // 22 128k
+    case ADDR_SECTOR_DATA_LATEST:   return FLASH_SECTOR_23;  // 23 128k
     }
 
     LOG_ERROR_TRACE("Недопустимый сектор");

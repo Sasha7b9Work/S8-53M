@@ -321,7 +321,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\src\main.cpp</Filename>
+          <Filename>&lt;2&gt;.\src\main.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\DLoader\src/main.cpp\68</Expression>
         </Bp>
@@ -996,7 +996,7 @@
 
   <Group>
     <GroupName>Hardware/HAL</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
