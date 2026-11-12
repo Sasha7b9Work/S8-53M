@@ -414,6 +414,9 @@ static void Netif_Config(void)
 
 void LAN::Init()
 {
+    HAL_NVIC_SetPriority(ETH_IRQn, 5, 0);
+    HAL_NVIC_EnableIRQ(ETH_IRQn);
+
     Timer::PauseOnTime(250);
    
     /* Initialize the LwIP stack */

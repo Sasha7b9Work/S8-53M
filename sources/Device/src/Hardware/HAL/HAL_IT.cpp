@@ -129,6 +129,13 @@ extern "C" {
     {
         HAL_ADC1::CallbackOnIRQ();
     }
+    
+    void ETH_IRQHandler(void)
+    {
+        extern ETH_HandleTypeDef EthHandle;
+        HAL_ETH_IRQHandler(&EthHandle);
+         __HAL_ETH_DMA_CLEAR_IT(&EthHandle, ETH_DMACSR_RI);
+    }
 
 
 #ifdef __cplusplus

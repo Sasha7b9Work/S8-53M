@@ -160,7 +160,7 @@ static void low_level_init(struct netif *netif)
   /* Initialize the RX POOL */
   LWIP_MEMPOOL_INIT(RX_POOL);
   
-  HAL_ETH_Start(&EthHandle);
+  HAL_ETH_Start_IT(&EthHandle);
 
   {
       uint32_t bmsr_value = 0;
@@ -195,6 +195,21 @@ static void low_level_init(struct netif *netif)
   }
   
   ethernet_link_check_state(netif);
+
+  uint val = 0x55555555;
+
+  for (uint8_t reg = 0; reg <= 6; reg++)
+  {
+    for(int i = 0; i < 2; i++)
+    {
+      if (HAL_ETH_ReadPHYRegister(&EthHandle, 0x1F, reg, &val) == HAL_OK)
+      {
+          // запомните пары reg/val в массив или printf
+          val = val;
+      }
+    }
+    val = val;
+  }
 }
 
 
