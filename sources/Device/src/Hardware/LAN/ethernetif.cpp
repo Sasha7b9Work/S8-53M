@@ -14,6 +14,10 @@
 #define IFNAME0 's'
 #define IFNAME1 't'
 
+#ifdef WIN32
+#define __ALIGN_BEGIN
+#endif
+
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 #if defined ( __ICCARM__ ) /*!< IAR Compiler */
@@ -50,6 +54,8 @@ ETH_HandleTypeDef EthHandle;
   */
 void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 {
+    (void)heth;
+
     /* Enable GPIOs clocks */
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -174,6 +180,8 @@ static void low_level_init(struct netif *netif)
   */
 static err_t low_level_output(struct netif *netif, struct pbuf *p)
 {
+    (void)netif;
+
     err_t errval;
     struct pbuf *q;
     uint8_t *buffer = (uint8_t *)(EthHandle.TxDesc->Buffer1Addr);

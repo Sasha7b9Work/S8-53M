@@ -712,15 +712,18 @@ static void Draw_EnterSerialNumber()
     int number = 0;
     int year = 0;
 
+    extern unsigned int VERSION_BUILD;
+    extern const char *DATE_BUILD;
+
     int allShots = OTP::GetSerialNumber(&number, &year);
 
     String<>("Текущий сохранённый номер %02d %d", number, year + 2000).Draw(x0 + deltaX, y0 + 130, COLOR_FILL);
 
     String<>("Осталось места для %d попыток", allShots).Draw(x0 + deltaX, y0 + 100);
 
-    String<>("Время сборки : %s %s", __DATE__, __TIME__).Draw(x0 + 10, y0 + 10);
+    String<>("Дата сборки : %s", DATE_BUILD).Draw(x0 + 10, y0 + 10);
 
-    String<>("Версия %s %s", DEVELOPER_VERSION, TYPE_BUILD).Draw(x0 + 10, y0 + 25);
+    String<>("Версия %d %s", VERSION_BUILD, TYPE_BUILD).Draw(x0 + 10, y0 + 25);
 }
 
 

@@ -37,4 +37,4 @@ def ProcessFile(name_file):
                 file.write(line)
             file.close()
 
-ProcessFile("sources/common/defines_com.h")
+ProcessFile("sources/common/defines_com.cpp")

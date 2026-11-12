@@ -5,6 +5,7 @@ project (Device)
 set(CMAKE_UNITY_BUILD OFF)
 
 include_directories(
+    ../common
     ../common/_VS_KEIL/ARMCLANG
     ../common/_VS_KEIL/CMSIS
     ../common/_VS_KEIL/FatFS
