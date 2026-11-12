@@ -113,9 +113,31 @@ static void low_level_init(struct netif *netif)
   EthHandle.Init.RxDesc = DMARxDscrTab;
   EthHandle.Init.TxDesc = DMATxDscrTab;
   EthHandle.Init.RxBuffLen = ETH_RX_BUF_SIZE;
-
+  
+  
   /* configure ethernet peripheral (GPIOs, clocks, MAC, DMA) */
   HAL_ETH_Init(&EthHandle);
+  
+  HAL_ETH_SetMDIOClockRange(&EthHandle);
+
+  uint32_t phy_id1 = 0, phy_id2 = 0;
+    for (uint16_t addr = 0; addr < 32; addr++) {
+        if (HAL_ETH_ReadPHYRegister(&EthHandle, addr, 0x02, &phy_id1) == HAL_OK &&
+            HAL_ETH_ReadPHYRegister(&EthHandle, addr, 0x03, &phy_id2) == HAL_OK) {
+            if (phy_id1 != 0xFFFF && phy_id2 != 0xFFFF)
+            {
+                addr = addr;
+                phy_id1 = phy_id1;
+                phy_id2 = phy_id2;
+            }
+            else
+            {
+                addr = addr;
+                phy_id1 = phy_id1;
+                phy_id2 = phy_id2;
+            }
+        }
+    }
 
   /* set MAC hardware address length */
   netif->hwaddr_len = ETH_HWADDR_LEN;
@@ -137,9 +159,94 @@ static void low_level_init(struct netif *netif)
 
   /* Initialize the RX POOL */
   LWIP_MEMPOOL_INIT(RX_POOL);
+  
+  HAL_ETH_Start(&EthHandle);
 
+  {
+      uint32_t bmsr_value = 0;
+      HAL_StatusTypeDef status;
+
+      // Предполагая, что адрес PHY равен 0x1F (или тот, который вы определили ранее)
+      status = HAL_ETH_ReadPHYRegister(&EthHandle, 0x1F, 0x01, &bmsr_value);
+
+      if (status == HAL_OK)
+      {
+          // Проверка бита Link Status (бит 2)
+          if (bmsr_value & 0x0004)
+          {
+              bmsr_value = bmsr_value;
+          }
+          else
+          {
+              bmsr_value = bmsr_value;
+              // Link DOWN
+          }
+          if (bmsr_value & 0x0020)
+          {
+              // Auto-negotiation complete
+              bmsr_value = bmsr_value;
+          }
+          else
+          {
+              // AN still in progress — подождите и перечитайте
+              bmsr_value = bmsr_value;
+          }
+      }
+  }
+  
   ethernet_link_check_state(netif);
 }
+
+
+/**
+  * @brief
+  * @retval None
+  */
+void ethernet_link_check_state(struct netif *netif)
+{
+    uint32_t bmsr = 0;
+    HAL_StatusTypeDef status;
+
+    // Читаем BMSR (Basic Mode Status Register) на адресе PHY 0x1F
+    status = HAL_ETH_ReadPHYRegister(&EthHandle, 0x1F, 0x01, &bmsr);
+
+    if (status != HAL_OK)
+    {
+        // Ошибка чтения PHY — можно временно ничего не делать или считать линк потерянным
+        return;
+    }
+
+    // Проверяем бит Link Status (бит 2)
+    if (bmsr & 0x0004)
+    {
+        // Линк есть
+        if (!netif_is_link_up(netif))
+        {
+            // Если LwIP ещё не знает, что линк поднят — сообщаем
+            netif_set_link_up(netif);
+            netif_set_up(netif);
+
+            // Опционально: можно настроить скорость/дуплекс MAC здесь, 
+            // если авто-негоциация не передаёт это автоматически.
+            // Например:
+            // ETH_MACConfigTypeDef MACConf;
+            // HAL_ETH_GetMACConfig(&EthHandle, &MACConf);
+            // MACConf.Speed = ETH_SPEED_100M; // или определите из регистра
+            // MACConf.DuplexMode = ETH_FULLDUPLEX_MODE;
+            // HAL_ETH_SetMACConfig(&EthHandle, &MACConf);
+        }
+    }
+    else
+    {
+        // Линка нет
+        if (netif_is_link_up(netif))
+        {
+            netif_set_link_down(netif);
+            netif_set_down(netif);
+        }
+    }
+}
+
 
 /**
   * @brief This function should do the actual transmission of the packet. The packet is
@@ -383,48 +490,6 @@ int32_t ETH_PHY_IO_GetTick(void)
   return (int32_t)HAL_GetTick();
 }
 
-/**
-  * @brief
-  * @retval None
-  */
-void ethernet_link_check_state(struct netif *netif)
-{
-    (void)netif;
-  /*
-  ETH_MACConfigTypeDef MACConf = {0};
-  int32_t PHYLinkState = 0U;
-  uint32_t linkchanged = 0U, speed = 0U, duplex =0U;
-
-  PHYLinkState = DP83848_GetLinkState(&DP83848);
-
-  #define  DP83848_STATUS_LINK_DOWN             ((int32_t) 1)
-  
-  if(netif_is_link_up(netif) && (PHYLinkState <= DP83848_STATUS_LINK_DOWN))
-  {
-    HAL_ETH_Stop(&EthHandle);
-    netif_set_down(netif);
-    netif_set_link_down(netif);
-  }
-  else if(!netif_is_link_up(netif) && (PHYLinkState > DP83848_STATUS_LINK_DOWN))
-  {
-      duplex = ETH_FULLDUPLEX_MODE;
-      speed = ETH_SPEED_100M;
-      linkchanged = 1;
-
-      if(linkchanged)
-    {
-      // Get MAC Config MAC
-      HAL_ETH_GetMACConfig(&EthHandle, &MACConf);
-      MACConf.DuplexMode = duplex;
-      MACConf.Speed = speed;
-      HAL_ETH_SetMACConfig(&EthHandle, &MACConf);
-      HAL_ETH_Start(&EthHandle);
-      netif_set_up(netif);
-      netif_set_link_up(netif);
-    }
-  }
-  */
-}
 
 void HAL_ETH_RxAllocateCallback(uint8_t **buff)
 {

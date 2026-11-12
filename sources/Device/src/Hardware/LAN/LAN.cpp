@@ -414,6 +414,8 @@ static void Netif_Config(void)
 
 void LAN::Init()
 {
+    Timer::PauseOnTime(250);
+   
     /* Initialize the LwIP stack */
     lwip_init();
 

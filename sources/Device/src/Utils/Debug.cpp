@@ -101,23 +101,34 @@ bool Debug::MemoryTest()
     static const int SIZE_BUFFER = 1024;
     static uint16 buffer[SIZE_BUFFER];
     
+    uint16 value = 0xFFFF;
+    
     for (uint16 *address = (uint16 *)HAL_FMC::ADDR_RAM_BEGIN; address < end; address += SIZE_BUFFER * 2)
     {
-//        while(true)
-//        {
-//            for(int i = 0; i < 100; i++)
-//            {
-//                *address = 0x5555;
-//            }
+//    int counter = 0;
+//    
+//    while(true)
+//    {
+//        uint16 r_value = *address;
 //        
-//            HAL_Delay(1000);
+//        if(r_value != value)
+//        {
+//            r_value = r_value;
+//            
+//            counter = 0;
 //        }
-
-        uint16 value = (uint16)std::rand();
+//        else
+//        {
+//            r_value = 0;
+//        }
+//        
+//        counter++;
+//    }
+        
         
         for (int i = 0; i < SIZE_BUFFER; i++)
         {
-            buffer[i] = value++;
+            buffer[i] = value;
         }
 
         HAL_FMC::RAM::WriteBuffer16(address, buffer, SIZE_BUFFER);
@@ -131,6 +142,25 @@ bool Debug::MemoryTest()
             return false;
         }
     }
+    
+    uint16 *address = (uint16 *)HAL_FMC::ADDR_RAM_BEGIN;
+    
+    uint64 counter = 0;
+    
+    while(true)
+    {
+        uint16 r_value = *address;
+        
+        if(r_value != value)
+        {
+            r_value = r_value;
+            
+            counter = 0;
+        }
+        
+        counter++;
+    }
+
 
     return true;
 }
