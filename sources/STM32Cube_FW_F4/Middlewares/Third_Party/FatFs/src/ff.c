@@ -575,11 +575,11 @@ static WCHAR LfnBuf[_MAX_LFN + 1];	/* LFN enabled with static working buffer */
 #elif _USE_LFN == 3 	/* LFN enabled with dynamic working buffer on the heap */
 #if _FS_EXFAT
 #define	DEF_NAMBUF		WCHAR *lfn;
-#define INIT_NAMBUF(fs)	{ lfn = ff_memalloc((_MAX_LFN+1)*2 + MAXDIRB(_MAX_LFN)); if (!lfn) LEAVE_FF(fs, FR_NOT_ENOUGH_CORE); (fs)->lfnbuf = lfn; (fs)->dirbuf = (BYTE*)(lfn+_MAX_LFN+1); }
+#define INIT_NAMBUF(fs)	{ lfn = (WCHAR *)ff_memalloc((_MAX_LFN+1)*2 + MAXDIRB(_MAX_LFN)); if (!lfn) LEAVE_FF(fs, FR_NOT_ENOUGH_CORE); (fs)->lfnbuf = lfn; (fs)->dirbuf = (BYTE*)(lfn+_MAX_LFN+1); }
 #define	FREE_NAMBUF()	ff_memfree(lfn)
 #else
 #define	DEF_NAMBUF		WCHAR *lfn;
-#define INIT_NAMBUF(fs)	{ lfn = ff_memalloc((_MAX_LFN+1)*2); if (!lfn) LEAVE_FF(fs, FR_NOT_ENOUGH_CORE); (fs)->lfnbuf = lfn; }
+#define INIT_NAMBUF(fs)	{ lfn = (WCHAR *)ff_memalloc((_MAX_LFN+1)*2); if (!lfn) LEAVE_FF(fs, FR_NOT_ENOUGH_CORE); (fs)->lfnbuf = lfn; }
 #define	FREE_NAMBUF()	ff_memfree(lfn)
 #endif
 

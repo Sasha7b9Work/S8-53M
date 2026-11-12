@@ -408,17 +408,12 @@ static void Netif_Config(void)
     }
 
     /* Set the link callback function, this function is called on change of link status */
-    netif_set_link_callback(&gnetif, ethernet_link_status_updated);
+    netif_set_link_callback(&gnetif, ethernetif_update_config);
 }
 
 
 void LAN::Init()
 {
-    HAL_NVIC_SetPriority(ETH_IRQn, 5, 0);
-    HAL_NVIC_EnableIRQ(ETH_IRQn);
-
-    Timer::PauseOnTime(250);
-   
     /* Initialize the LwIP stack */
     lwip_init();
 

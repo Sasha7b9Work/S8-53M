@@ -16,10 +16,7 @@
   ******************************************************************************
 **/
 /* Includes ------------------------------------------------------------------*/
-#include <stm32f4xx.h>
 #include "ff_gen_drv.h"
-
-#pragma clang diagnostic ignored "-Wunused-parameter"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -82,6 +79,8 @@ uint8_t FATFS_LinkDriver(const Diskio_drvTypeDef *drv, char *path)
   */
 uint8_t FATFS_UnLinkDriverEx(char *path, uint8_t lun)
 {
+    (void)lun;
+
   uint8_t DiskNum = 0;
   uint8_t ret = 1;
 

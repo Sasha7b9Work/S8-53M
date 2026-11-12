@@ -9,17 +9,7 @@
   *           + IO operation functions
   *           + Peripheral Control functions
   *           + Peripheral State and Error functions
-  *
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file in
-  * the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  ******************************************************************************  
+  *           
   @verbatim
   ==============================================================================
                         ##### How to use this driver #####
@@ -118,6 +108,17 @@
     and weak (surcharged) callbacks are used.
 	
   @endverbatim
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
+  *
   ******************************************************************************
   */
 
@@ -346,8 +347,6 @@ __weak void HAL_DCMI_MspDeInit(DCMI_HandleTypeDef* hdcmi)
   */
 HAL_StatusTypeDef HAL_DCMI_Start_DMA(DCMI_HandleTypeDef* hdcmi, uint32_t DCMI_Mode, uint32_t pData, uint32_t Length)
 {
-  HAL_StatusTypeDef status;
-
   /* Initialize the second memory address */
   uint32_t SecondMemAddress = 0U;
 
@@ -383,7 +382,7 @@ HAL_StatusTypeDef HAL_DCMI_Start_DMA(DCMI_HandleTypeDef* hdcmi, uint32_t DCMI_Mo
   if(Length <= 0xFFFFU)
   {
     /* Enable the DMA Stream */
-    status = HAL_DMA_Start_IT(hdcmi->DMA_Handle, (uint32_t)&hdcmi->Instance->DR, (uint32_t)pData, Length);
+    HAL_DMA_Start_IT(hdcmi->DMA_Handle, (uint32_t)&hdcmi->Instance->DR, (uint32_t)pData, Length);
   }
   else /* DCMI_DOUBLE_BUFFER Mode */
   {
@@ -410,7 +409,7 @@ HAL_StatusTypeDef HAL_DCMI_Start_DMA(DCMI_HandleTypeDef* hdcmi, uint32_t DCMI_Mo
     SecondMemAddress = (uint32_t)(pData + (4U*hdcmi->XferSize));
 
     /* Start DMA multi buffer transfer */
-    status = HAL_DMAEx_MultiBufferStart_IT(hdcmi->DMA_Handle, (uint32_t)&hdcmi->Instance->DR, (uint32_t)pData, SecondMemAddress, hdcmi->XferSize);
+    HAL_DMAEx_MultiBufferStart_IT(hdcmi->DMA_Handle, (uint32_t)&hdcmi->Instance->DR, (uint32_t)pData, SecondMemAddress, hdcmi->XferSize);
   }
 
   /* Enable Capture */
@@ -420,7 +419,7 @@ HAL_StatusTypeDef HAL_DCMI_Start_DMA(DCMI_HandleTypeDef* hdcmi, uint32_t DCMI_Mo
   __HAL_UNLOCK(hdcmi);
 
   /* Return function status */
-  return status;
+  return HAL_OK;
 }
 
 /**
@@ -574,10 +573,7 @@ void HAL_DCMI_IRQHandler(DCMI_HandleTypeDef *hdcmi)
     hdcmi->DMA_Handle->XferAbortCallback = DCMI_DMAError;
 
     /* Abort the DMA Transfer */
-    if (HAL_DMA_Abort_IT(hdcmi->DMA_Handle) != HAL_OK)
-    {
-      DCMI_DMAError(hdcmi->DMA_Handle);
-    }
+    HAL_DMA_Abort_IT(hdcmi->DMA_Handle);
   }
   /* Overflow interrupt management ********************************************/
   if((isr_value & DCMI_FLAG_OVRRI) == DCMI_FLAG_OVRRI)
@@ -595,10 +591,7 @@ void HAL_DCMI_IRQHandler(DCMI_HandleTypeDef *hdcmi)
     hdcmi->DMA_Handle->XferAbortCallback = DCMI_DMAError;
 
     /* Abort the DMA Transfer */
-    if (HAL_DMA_Abort_IT(hdcmi->DMA_Handle) != HAL_OK)
-    {
-      DCMI_DMAError(hdcmi->DMA_Handle);
-    }
+    HAL_DMA_Abort_IT(hdcmi->DMA_Handle);
   }
   /* Line Interrupt management ************************************************/
   if((isr_value & DCMI_FLAG_LINERI) == DCMI_FLAG_LINERI)
@@ -1167,3 +1160,5 @@ static void DCMI_DMAError(DMA_HandleTypeDef *hdma)
 /**
   * @}
   */
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

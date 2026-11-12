@@ -581,7 +581,6 @@ pbuf_add_header_force(struct pbuf *p, size_t header_size_increment)
 u8_t
 pbuf_remove_header(struct pbuf *p, size_t header_size_decrement)
 {
-  void *payload;
   u16_t increment_magnitude;
 
   LWIP_ASSERT("p != NULL", p != NULL);
@@ -597,7 +596,8 @@ pbuf_remove_header(struct pbuf *p, size_t header_size_decrement)
   LWIP_ERROR("increment_magnitude <= p->len", (increment_magnitude <= p->len), return 1;);
 
   /* remember current payload pointer */
-  payload = p->payload;
+  volatile void *payload = p->payload;
+  payload = payload;
   LWIP_UNUSED_ARG(payload); /* only used in LWIP_DEBUGF below */
 
   /* increase payload pointer (guarded by length check above) */

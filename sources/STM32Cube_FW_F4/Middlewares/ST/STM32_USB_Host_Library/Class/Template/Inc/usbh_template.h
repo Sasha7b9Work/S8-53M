@@ -6,12 +6,13 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2015 STMicroelectronics.
-  * All rights reserved.
+  * <h2><center>&copy; Copyright (c) 2015 STMicroelectronics.
+  * All rights reserved.</center></h2>
   *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
+  * This software component is licensed by ST under Ultimate Liberty license
+  * SLA0044, the "License"; You may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at:
+  *                      www.st.com/SLA0044
   *
   ******************************************************************************
   */
@@ -29,21 +30,21 @@ extern "C" {
 
 
 /** @addtogroup USBH_LIB
-  * @{
-  */
+* @{
+*/
 
 /** @addtogroup USBH_CLASS
-  * @{
-  */
+* @{
+*/
 
 /** @addtogroup USBH_TEMPLATE_CLASS
-  * @{
-  */
+* @{
+*/
 
 /** @defgroup USBH_TEMPLATE_CLASS
-  * @brief This file is the Header file for usbh_template.c
-  * @{
-  */
+* @brief This file is the Header file for usbh_template.c
+* @{
+*/
 
 
 /**
@@ -51,49 +52,49 @@ extern "C" {
   */
 
 /** @defgroup USBH_TEMPLATE_CLASS_Exported_Types
-  * @{
-  */
+* @{
+*/
 
 /* States for TEMPLATE State Machine */
 
 
 /**
-  * @}
-  */
+* @}
+*/
 
 /** @defgroup USBH_TEMPLATE_CLASS_Exported_Defines
-  * @{
-  */
+* @{
+*/
 
 /**
-  * @}
-  */
+* @}
+*/
 
 /** @defgroup USBH_TEMPLATE_CLASS_Exported_Macros
-  * @{
-  */
+* @{
+*/
 /**
-  * @}
-  */
+* @}
+*/
 
 /** @defgroup USBH_TEMPLATE_CLASS_Exported_Variables
-  * @{
-  */
+* @{
+*/
 extern USBH_ClassTypeDef  TEMPLATE_Class;
 #define USBH_TEMPLATE_CLASS    &TEMPLATE_Class
 
 /**
-  * @}
-  */
+* @}
+*/
 
 /** @defgroup USBH_TEMPLATE_CLASS_Exported_FunctionsPrototype
-  * @{
-  */
+* @{
+*/
 USBH_StatusTypeDef USBH_TEMPLATE_IOProcess(USBH_HandleTypeDef *phost);
 USBH_StatusTypeDef USBH_TEMPLATE_Init(USBH_HandleTypeDef *phost);
 /**
-  * @}
-  */
+* @}
+*/
 
 #ifdef __cplusplus
 }
@@ -102,18 +103,19 @@ USBH_StatusTypeDef USBH_TEMPLATE_Init(USBH_HandleTypeDef *phost);
 #endif /* __USBH_TEMPLATE_H */
 
 /**
-  * @}
-  */
+* @}
+*/
 
 /**
-  * @}
-  */
+* @}
+*/
 
 /**
-  * @}
-  */
+* @}
+*/
 
 /**
-  * @}
-  */
+* @}
+*/
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 

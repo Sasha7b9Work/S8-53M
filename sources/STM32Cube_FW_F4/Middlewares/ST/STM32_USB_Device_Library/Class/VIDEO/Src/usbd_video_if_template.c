@@ -6,18 +6,19 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2020 STMicroelectronics.
-  * All rights reserved.
+  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
+  * All rights reserved.</center></h2>
   *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
+  * This software component is licensed by ST under Ultimate Liberty license
+  * SLA0044, the "License"; You may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at:
+  *                      www.st.com/SLA0044
   *
   ******************************************************************************
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "usbd_video_if_template.h"
+#include "usbd_video_if.h"
 
 /* Include you image binary file here
     Binary image template shall provide:
@@ -40,7 +41,7 @@
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-uint8_t img_count;
+
 /* USER CODE END PV */
 
 /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
@@ -188,9 +189,6 @@ static int8_t VIDEO_Itf_DeInit(void)
   */
 static int8_t VIDEO_Itf_Control(uint8_t cmd, uint8_t *pbuf, uint16_t length)
 {
-  UNUSED(cmd);
-  UNUSED(pbuf);
-  UNUSED(length);
 
   return (0);
 }
@@ -223,9 +221,9 @@ static int8_t VIDEO_Itf_Data(uint8_t **pbuf, uint16_t *psize, uint16_t *pcktidx)
 
   */
   const uint8_t *(*ImagePtr) = tImagesList;
-  uint32_t packet_count = (tImagesSizes[img_count]) / ((UVC_PACKET_SIZE - (UVC_HEADER_PACKET_CNT * 2U)));
-  uint32_t packet_remainder = (tImagesSizes[img_count]) % ((UVC_PACKET_SIZE - (UVC_HEADER_PACKET_CNT * 2U)));
-  static uint8_t packet_index = 0U;
+  uint32_t packet_count = (tImagesSizes[img_count]) / ((uint16_t)(UVC_PACKET_SIZE - (UVC_HEADER_PACKET_CNT * 2U)));
+  uint32_t packet_remainder = (tImagesSizes[img_count]) % ((uint16_t)(UVC_PACKET_SIZE - (UVC_HEADER_PACKET_CNT * 2U)));
+  static uint8_t packet_index = 0;
 
   /* Check if end of current image has been reached */
   if (packet_index < packet_count)
@@ -234,19 +232,17 @@ static int8_t VIDEO_Itf_Data(uint8_t **pbuf, uint16_t *psize, uint16_t *pcktidx)
     *psize = (uint16_t)UVC_PACKET_SIZE;
 
     /* Get the pointer to the next packet to be transmitted */
-    *pbuf = (uint8_t *)(*(ImagePtr + img_count) + \
-                        (packet_index * ((uint16_t)(UVC_PACKET_SIZE - (UVC_HEADER_PACKET_CNT * 2U)))));
+    *pbuf = (uint8_t *)(*(ImagePtr + img_count) + packet_index * ((uint16_t)(UVC_PACKET_SIZE - (UVC_HEADER_PACKET_CNT * 2U))));
   }
   else if ((packet_index == packet_count))
   {
     if (packet_remainder != 0U)
     {
       /* Get the pointer to the next packet to be transmitted */
-      *pbuf = (uint8_t *)(*(ImagePtr + img_count) + \
-                          (packet_index * ((uint16_t)(UVC_PACKET_SIZE - (UVC_HEADER_PACKET_CNT * 2U)))));
+      *pbuf = (uint8_t *)(*(ImagePtr + img_count) + packet_index * ((uint16_t)(UVC_PACKET_SIZE - (UVC_HEADER_PACKET_CNT * 2U))));
 
       /* Set the current packet size */
-      *psize = (uint16_t)(packet_remainder + (UVC_HEADER_PACKET_CNT * 2U));
+      *psize = packet_remainder + (UVC_HEADER_PACKET_CNT * 2U);
     }
     else
     {
@@ -266,7 +262,7 @@ static int8_t VIDEO_Itf_Data(uint8_t **pbuf, uint16_t *psize, uint16_t *pcktidx)
   *pcktidx = packet_index;
 
   /* Increment the packet count and check if it reached the end of current image buffer */
-  if (packet_index++ >= (packet_count + 1U))
+  if (packet_index++ >= (packet_count + 1))
   {
     /* Reset the packet count to zero */
     packet_index = 0U;
@@ -274,7 +270,7 @@ static int8_t VIDEO_Itf_Data(uint8_t **pbuf, uint16_t *psize, uint16_t *pcktidx)
     /* Move to the next image in the images table */
 
     img_count++;
-    USBD_Delay(USBD_VIDEO_IMAGE_LAPS);
+    HAL_Delay(USBD_VIDEO_IMAGE_LAPS);
     /* Check if images count has been reached, then reset to zero (go back to first image in circular loop) */
     if (img_count == IMG_NBR)
     {
@@ -296,3 +292,5 @@ static int8_t VIDEO_Itf_Data(uint8_t **pbuf, uint16_t *psize, uint16_t *pcktidx)
 /**
   * @}
   */
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

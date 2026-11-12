@@ -4,17 +4,6 @@
   * @author  MCD Application Team
   * @brief   This file provides the HID core functions.
   *
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2015 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
   * @verbatim
   *
   *          ===================================================================
@@ -31,6 +20,17 @@
   *
   *
   *  @endverbatim
+  *
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; Copyright (c) 2015 STMicroelectronics.
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under Ultimate Liberty license
+  * SLA0044, the "License"; You may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at:
+  *                      www.st.com/SLA0044
   *
   ******************************************************************************
   */
@@ -124,7 +124,7 @@ USBD_ClassTypeDef USBD_TEMPLATE_ClassDriver =
 
 #if defined ( __ICCARM__ ) /*!< IAR Compiler */
 #pragma data_alignment=4
-#endif /* __ICCARM__ */
+#endif
 /* USB TEMPLATE device Configuration Descriptor */
 __ALIGN_BEGIN static uint8_t USBD_TEMPLATE_CfgDesc[USB_TEMPLATE_CONFIG_DESC_SIZ] __ALIGN_END =
 {
@@ -146,7 +146,7 @@ __ALIGN_BEGIN static uint8_t USBD_TEMPLATE_CfgDesc[USB_TEMPLATE_CONFIG_DESC_SIZ]
 
 #if defined ( __ICCARM__ ) /*!< IAR Compiler */
 #pragma data_alignment=4
-#endif /* __ICCARM__ */
+#endif
 /* USB Standard Device Descriptor */
 __ALIGN_BEGIN static uint8_t USBD_TEMPLATE_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_DESC] __ALIGN_END =
 {
@@ -252,12 +252,12 @@ static uint8_t *USBD_TEMPLATE_GetCfgDesc(uint16_t *length)
 }
 
 /**
-  * @brief  USBD_TEMPLATE_GetDeviceQualifierDesc
+  * @brief  DeviceQualifierDescriptor
   *         return Device Qualifier descriptor
   * @param  length : pointer data length
   * @retval pointer to descriptor buffer
   */
-uint8_t *USBD_TEMPLATE_GetDeviceQualifierDesc(uint16_t *length)
+uint8_t *USBD_TEMPLATE_DeviceQualifierDescriptor(uint16_t *length)
 {
   *length = (uint16_t)sizeof(USBD_TEMPLATE_DeviceQualifierDesc);
   return USBD_TEMPLATE_DeviceQualifierDesc;
@@ -351,9 +351,17 @@ static uint8_t USBD_TEMPLATE_DataOut(USBD_HandleTypeDef *pdev, uint8_t epnum)
 }
 
 /**
-  * @}
+  * @brief  DeviceQualifierDescriptor
+  *         return Device Qualifier descriptor
+  * @param  length : pointer data length
+  * @retval pointer to descriptor buffer
   */
+uint8_t *USBD_TEMPLATE_GetDeviceQualifierDesc(uint16_t *length)
+{
+  *length = (uint16_t)sizeof(USBD_TEMPLATE_DeviceQualifierDesc);
 
+  return USBD_TEMPLATE_DeviceQualifierDesc;
+}
 
 /**
   * @}
@@ -363,3 +371,10 @@ static uint8_t USBD_TEMPLATE_DataOut(USBD_HandleTypeDef *pdev, uint8_t epnum)
 /**
   * @}
   */
+
+
+/**
+  * @}
+  */
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -5,14 +5,6 @@
 #ifndef _FF_INTEGER
 #define _FF_INTEGER
 
-#ifdef _WIN32	/* FatFs development platform */
-
-//#include <windows.h>
-//#include <tchar.h>
-//typedef unsigned __int64 QWORD;
-
-#endif
-
 /* These types MUST be 16-bit or 32-bit */
 typedef int				INT;
 typedef unsigned int	UINT;
@@ -23,7 +15,9 @@ typedef unsigned char	BYTE;
 /* These types MUST be 16-bit */
 typedef short			SHORT;
 typedef unsigned short	WORD;
+
 typedef unsigned short	WCHAR;
+
 
 /* These types MUST be 32-bit */
 typedef long			LONG;
